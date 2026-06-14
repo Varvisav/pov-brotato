@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://ci8stbr0wbtse"]
+
+[ext_resource type="Script" uid="uid://ci2i3m7p0ep72" path="res://scenes/menus/restart.gd" id="1_o2rtq"]
+
+[node name="Restart" type="CanvasLayer" unique_id=724091964]
+script = ExtResource("1_o2rtq")
+
+[node name="Button" type="Button" parent="." unique_id=1135443658]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -76.0
+offset_top = -98.0
+offset_right = 80.0
+offset_bottom = -46.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 27
+text = "RESTART"
+
+[node name="KILLS" type="Label" parent="." unique_id=368602153]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -142.0
+offset_top = -157.0
+offset_right = 152.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 31
+horizontal_alignment = 1
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

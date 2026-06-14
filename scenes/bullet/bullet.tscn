@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://b0ku3hoxwsecg"]
+
+[ext_resource type="Script" uid="uid://11r37pd1q7lx" path="res://scenes/bullet/bullet.gd" id="1_83itf"]
+[ext_resource type="Texture2D" uid="uid://dqnui7u5hye60" path="res://assets_brotato_pov/bullet5.png" id="2_c6pnf"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y25gk"]
+radius = 8.0
+height = 28.0
+
+[node name="bullet" type="Node2D" unique_id=1054294178]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_83itf")
+
+[node name="Area2Dbullet" type="Area2D" parent="." unique_id=924096439]
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2Dbullet" unique_id=350759523]
+shape = SubResource("CapsuleShape2D_y25gk")
+
+[node name="Bullet5" type="Sprite2D" parent="." unique_id=1756691363]
+rotation = 1.5707964
+texture = ExtResource("2_c6pnf")
+
+[connection signal="area_entered" from="Area2Dbullet" to="." method="_on_area_2_dbullet_area_entered"]

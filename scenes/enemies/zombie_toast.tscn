@@ -1,0 +1,187 @@
+[gd_scene format=3 uid="uid://dls652vw87ee3"]
+
+[ext_resource type="Script" uid="uid://nvp3kdr5bpjw" path="res://scenes/enemies/zombie_toast.gd" id="1_3p5r1"]
+[ext_resource type="Texture2D" uid="uid://mwni62tqirn6" path="res://assets_brotato_pov/ZombieToast.png" id="2_gjx0o"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3p5r1"]
+size = Vector2(13, 13)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aa02p"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(896, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cy3yi"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(960, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vejul"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1024, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sro20"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1088, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2aiy"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1152, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0lsm8"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1216, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_708x6"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1280, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1bsep"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1344, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqr1e"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1408, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rts4m"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1472, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi4u1"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(1536, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3p5r1"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gjx0o"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2ywc"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xcvpf"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cs3a"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r7vop"]
+atlas = ExtResource("2_gjx0o")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qc72l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aa02p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cy3yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vejul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sro20")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t2aiy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0lsm8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_708x6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1bsep")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqr1e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rts4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi4u1")
+}],
+"loop": false,
+"name": &"death",
+"speed": 11.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3p5r1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gjx0o")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 2.5
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j2ywc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xcvpf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cs3a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r7vop")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fd2bh"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3p5r1"]
+radius = 11.0
+
+[sub_resource type="SystemFont" id="SystemFont_3p5r1"]
+subpixel_positioning = 0
+
+[node name="ZombieToast" type="CharacterBody2D" unique_id=395683538]
+script = ExtResource("1_3p5r1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=867490560]
+shape = SubResource("RectangleShape2D_3p5r1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1307333330]
+position = Vector2(0, -11.000001)
+scale = Vector2(0.6421569, 0.578125)
+sprite_frames = SubResource("SpriteFrames_qc72l")
+animation = &"death"
+autoplay = "idle"
+
+[node name="Death" type="Area2D" parent="." unique_id=1340863879]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Death" unique_id=1680131521]
+shape = SubResource("CircleShape2D_fd2bh")
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=707063088]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1744258312]
+shape = SubResource("CircleShape2D_3p5r1")
+
+[node name="HpLabel" type="Label" parent="." unique_id=1662882428]
+modulate = Color(0.63623315, 0.28917715, 0.2838139, 1)
+offset_left = -4.0
+offset_top = -16.0
+offset_right = 7.0
+offset_bottom = -3.0
+theme_override_fonts/font = SubResource("SystemFont_3p5r1")
+theme_override_font_sizes/font_size = 11
+
+[connection signal="body_entered" from="Death" to="." method="_on_death_body_entered"]
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

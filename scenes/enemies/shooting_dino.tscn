@@ -1,0 +1,146 @@
+[gd_scene format=3 uid="uid://ceege75e0q4bn"]
+
+[ext_resource type="Texture2D" uid="uid://n48o1l6yc1j" path="res://assets_brotato_pov/DinoSprites - doux.png" id="1_5ipbc"]
+[ext_resource type="Script" uid="uid://c1koom4ptnlpg" path="res://scenes/enemies/shooting_dino.gd" id="1_l333l"]
+[ext_resource type="PackedScene" uid="uid://3rqvgrfvoybe" path="res://scenes/bullet/bullet_dino.tscn" id="2_mj6lr"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oulyw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_utj30"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(336, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbwke"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(360, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l333l"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgynv"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lq5po"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bghml"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(72, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhunw"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(96, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rj5pj"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wymo3"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itbqu"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y55am"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12rhc"]
+atlas = ExtResource("1_5ipbc")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5ipbc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_utj30")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fbwke")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l333l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgynv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lq5po")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bghml")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhunw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rj5pj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wymo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_itbqu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y55am")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12rhc")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 8.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l333l"]
+size = Vector2(15, 26)
+
+[node name="ShootingDino" type="CharacterBody2D" unique_id=713331307]
+script = ExtResource("1_l333l")
+bullet_scene = ExtResource("2_mj6lr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1989181940]
+shape = SubResource("CapsuleShape2D_oulyw")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=575038760]
+position = Vector2(1, 0)
+scale = Vector2(1.7, 1.7)
+sprite_frames = SubResource("SpriteFrames_5ipbc")
+animation = &"death"
+
+[node name="HurtBox" type="Area2D" parent="." unique_id=1509672861]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=267342545]
+position = Vector2(-1, -1)
+shape = SubResource("RectangleShape2D_l333l")
+
+[node name="Timer" type="Timer" parent="." unique_id=441189512]
+wait_time = 3.0
+autostart = true
+
+[node name="HpLabel" type="Label" parent="." unique_id=1852301381]
+modulate = Color(0.79724777, 0.29687366, 0.31995466, 1)
+offset_left = -7.0
+offset_top = -27.0
+offset_right = 8.0
+offset_bottom = -9.0
+theme_override_font_sizes/font_size = 13
+
+[connection signal="area_exited" from="HurtBox" to="." method="_on_hurt_box_area_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

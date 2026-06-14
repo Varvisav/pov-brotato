@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://1wlthkreyv12"]
+
+[ext_resource type="Script" uid="uid://cx1bnvvxxgl5n" path="res://scenes/menus/start_menu.gd" id="1_ouf4f"]
+[ext_resource type="Texture2D" uid="uid://djceeaioeou76" path="res://assets_brotato_pov/Background_space.png" id="2_thu50"]
+
+[node name="StartMenu" type="VBoxContainer" unique_id=604685616]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -157.0
+offset_top = -45.5
+offset_right = 157.0
+offset_bottom = 45.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ouf4f")
+
+[node name="BackgroundSpace" type="Sprite2D" parent="." unique_id=1801971720]
+position = Vector2(156.99997, 45.500004)
+scale = Vector2(1.126953, 1.0833334)
+texture = ExtResource("2_thu50")
+
+[node name="StartButton" type="Button" parent="." unique_id=41879110]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 56
+text = "START"

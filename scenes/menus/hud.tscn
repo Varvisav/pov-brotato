@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://blp1nftrwk7t4"]
+
+[ext_resource type="Script" uid="uid://cvr1d2xi8fxqe" path="res://scenes/menus/hud.gd" id="1_ahhtf"]
+
+[node name="Hud" type="CanvasLayer" unique_id=2104495217]
+script = ExtResource("1_ahhtf")
+
+[node name="Button" type="Button" parent="." unique_id=570372188]
+offset_left = 1060.0
+offset_top = 3.0
+offset_right = 1150.0
+offset_bottom = 50.0
+text = "PAUSE"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=858375578]
+offset_right = 101.0
+offset_bottom = 94.0
+size_flags_horizontal = 0
+
+[node name="PlayerHpLabel" type="Label" parent="." unique_id=437285707]
+offset_right = 101.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 36
+
+[node name="PlayerPointsLabel" type="Label" parent="." unique_id=1098034008]
+offset_top = 50.0
+offset_right = 101.0
+offset_bottom = 100.0
+theme_override_font_sizes/font_size = 36
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
