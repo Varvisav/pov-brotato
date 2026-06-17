@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://busnv50su4g0p"]
+
+[ext_resource type="PackedScene" uid="uid://bdriy015sbl3p" path="res://scenes/spawners/spawner.tscn" id="1_xv276"]
+[ext_resource type="Script" uid="uid://cautmv2ixspv" path="res://scenes/spawners/bomb_SPAWNER/bomb_spawner.gd" id="2_w530x"]
+[ext_resource type="PackedScene" uid="uid://b45go25wfwabc" path="res://scenes/enemies/bomb/bomb.tscn" id="3_r7jr7"]
+
+[node name="BombSpawner" unique_id=1548942387 instance=ExtResource("1_xv276")]
+script = ExtResource("2_w530x")
+enemies_scene = ExtResource("3_r7jr7")
+
+[node name="Timer" parent="." index="0" unique_id=606788311]
+wait_time = 22.0

@@ -1,16 +1,14 @@
 extends CharacterBody2D
 class_name ZombieToast
 var direction: Vector2
-const SPEED: int = 40
+const SPEED: int = 30
 var HP: int = 2
 
-
+@onready var hurt_box: Area2D = $HurtBox
 @onready var anim = $AnimatedSprite2D
 @onready var hp_label: Label= $HpLabel
 var dead = false
 
-func _ready():
-	pass
 
 func _physics_process(delta):
 	if dead:
@@ -36,44 +34,30 @@ func _physics_process(delta):
 		anim.play("idle")
 	hp_label.text = str(HP)
 	#move_and_slide()
-	
-	
+	if HP <= 0:
+		death()
 
 
 func death():
 	GameManager.zombie_toast=null
 	dead = true
 	hp_label.text = str(0)
+	hurt_box.queue_free()
 	anim.play("death")
 	await anim.animation_finished
 	queue_free()
 	GameManager.up_score()
 
 
-
 func _on_death_body_entered(body):
 	if dead:
 			return
 	if body.name == "CharacterBody2D":
-		GameManager.player_HP -=3
-		GameManager.player.hurt_flash()
-		
-
-
-func _on_hurt_box_area_entered(area):
-	if dead:
-			return
-	if area.name == "Area2Dbullet":
-		HP = HP - GameManager.players_bullet_damage
-		hurt_flash()
-		
-	if HP <= 0:
-		death()
-	if dead:
-			return
+		GameManager.player.HP -=2
+		GameManager.player.hurt_flush()
 	
 	
-func hurt_flash():
+func hurt_flush():
 	if dead:
 			return
 	anim.modulate = Color(1, 0, 1)

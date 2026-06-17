@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://degmf7xmnguny"]
+
+[ext_resource type="PackedScene" uid="uid://dqvm7hqflk6t1" path="res://scenes/bullet/bullet.tscn" id="1_7cy0m"]
+[ext_resource type="Script" uid="uid://dj175xkgj1pca" path="res://scenes/bullet/bomb_boom/bomb_bullet.gd" id="2_vftcm"]
+[ext_resource type="Texture2D" uid="uid://c8v5jckpe4mcl" path="res://assets_brotato_pov/firebomg/Fire Spell_Frame_05.png" id="2_xpj7y"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vftcm"]
+radius = 4.0
+height = 22.0
+
+[node name="BombBullet" unique_id=2126284509 instance=ExtResource("1_7cy0m")]
+script = ExtResource("2_vftcm")
+BULLET_SPEED = 210
+damage = 4
+
+[node name="Sprite2D" parent="." index="0" unique_id=896776532]
+position = Vector2(-3.000002, -0.117427066)
+rotation = 3.1415927
+scale = Vector2(0.055, 0.055)
+texture = ExtResource("2_xpj7y")
+
+[node name="Area2D" type="Area2D" parent="." index="1" unique_id=1029358687]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=965017791]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_vftcm")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

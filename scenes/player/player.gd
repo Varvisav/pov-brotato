@@ -4,7 +4,7 @@ class_name Player extends CharacterBody2D
 @onready var anim = $AnimatedSprite2D
 @onready var camera = $Camera2D
 var alive = true
-
+var HP: int = 40
 
 func _input(_event):
 	if Input.is_action_just_pressed("shoot"):
@@ -16,6 +16,7 @@ func _ready():
 
 func _physics_process(_delta: float) -> void:
 	if alive == false:
+		HP = 0
 		return
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * GameManager.player_speed
@@ -28,18 +29,17 @@ func _physics_process(_delta: float) -> void:
 	elif direction.x >0:
 		anim.flip_h = false
 	move_and_slide()
-	if GameManager.player_HP <= 0:
+	if GameManager.player.HP <= 0:
 		death()
 	
 	
 func _shoot():
 	if alive == false:
 		return
-	var viewport_center: Vector2 = get_viewport().get_window().size / 2
-	var mouse_pos: Vector2 = get_viewport().get_mouse_position()
-	var bullet_dir: Vector2 = (mouse_pos - viewport_center).normalized()
+	var mouse_pos: Vector2 = get_global_mouse_position()
+	var bullet_dir: Vector2 = (mouse_pos - self.global_position).normalized()
 
-	var bullet: Bullet = bullet_scene.instantiate()
+	var bullet: PlayerBullet = bullet_scene.instantiate()
 	bullet.direction = bullet_dir
 	bullet.global_position = global_position
 	GameManager.spawn_bullet(bullet)
@@ -50,13 +50,21 @@ func death():
 	await anim.animation_finished
 	GameManager.player=null
 	var tween = create_tween()
-	await get_tree().create_timer(2).timeout
+	#await get_tree().create_timer(2).timeout
 	tween.tween_property(camera, "zoom", Vector2(4, 4), 60)
 	
 	GameManager.show_game_over()
 	
 	
-func hurt_flash():
+func hurt_flush():
 	anim.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.17).timeout
 	anim.modulate = Color(1,1,1)
+	
+
+
+#func _on_hurt_box_area_entered(area):
+	#if alive == false:
+	#		return
+	#if area.name == "Area2D":
+	#	hurt_flush()

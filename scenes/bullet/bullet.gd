@@ -1,20 +1,27 @@
-class_name Bullet extends Node2D
+extends Node2D
+class_name  Bullet
+
+@export var BULLET_SPEED: = 1
+@export var damage:int = 1
+
 var direction: Vector2
-const BULLET_SPEED: = 200
 
-func _process(delta):
+func move_bullet(delta):
 	position += direction * BULLET_SPEED * delta
-func _ready():
-	rotation = direction.angle()
-	await get_tree().create_timer(4.0).timeout
-	queue_free()
-
-
-func _on_area_2_dbullet_area_entered(area):
 	
-	if area.name == "HurtBox":
-		#if !is_instance_valid(GameManager.zombie_toast)
-			#return
-		#if !is_instance_valid(GameManager.dino):
-			#return
+
+func deal_damage(object, body):
+	if object.name == "HurtBox":
 		self.queue_free()
+		body.HP -= damage
+		body.hurt_flush()
+
+func bullet_being(dissapear_time:float):
+	rotation = direction.angle()
+	await get_tree().create_timer(dissapear_time).timeout
+	var tween = create_tween()
+	tween.parallel().tween_property(self, "modulate:a", 0.0, 0.2)
+	tween.parallel().tween_property(self, "scale", Vector2.ZERO,0.15)
+	await tween.finished
+	queue_free()
+	

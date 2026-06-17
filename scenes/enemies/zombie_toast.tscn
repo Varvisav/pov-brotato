@@ -112,7 +112,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 11.0
+"speed": 10.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -163,6 +163,8 @@ scale = Vector2(0.6421569, 0.578125)
 sprite_frames = SubResource("SpriteFrames_qc72l")
 animation = &"death"
 autoplay = "idle"
+frame = 10
+frame_progress = 1.0
 
 [node name="Death" type="Area2D" parent="." unique_id=1340863879]
 
@@ -170,6 +172,7 @@ autoplay = "idle"
 shape = SubResource("CircleShape2D_fd2bh")
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=707063088]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=1744258312]
 shape = SubResource("CircleShape2D_3p5r1")

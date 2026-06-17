@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://n48o1l6yc1j" path="res://assets_brotato_pov/DinoSprites - doux.png" id="1_5ipbc"]
 [ext_resource type="Script" uid="uid://c1koom4ptnlpg" path="res://scenes/enemies/shooting_dino.gd" id="1_l333l"]
-[ext_resource type="PackedScene" uid="uid://3rqvgrfvoybe" path="res://scenes/bullet/bullet_dino.tscn" id="2_mj6lr"]
+[ext_resource type="PackedScene" uid="uid://b2v7ye0umgm87" path="res://scenes/bullet/dino_bullet/dino_bullet.tscn" id="2_mj6lr"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oulyw"]
 
@@ -125,6 +125,7 @@ sprite_frames = SubResource("SpriteFrames_5ipbc")
 animation = &"death"
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1509672861]
+collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=267342545]
 position = Vector2(-1, -1)

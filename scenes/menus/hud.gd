@@ -1,12 +1,16 @@
 extends CanvasLayer
+class_name Hud
 @onready var hp_label: Label = $PlayerHpLabel
 @onready var points_label: Label = $PlayerPointsLabel
 
+#var player_helth = GameManager.player_HP
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
-	hp_label.text = "HEALTH: " + str(GameManager.player_HP)
-	points_label.text = "KILLS: " + str(GameManager.player_points)
+	if !is_instance_valid(GameManager.player):
+		hp_label.text = "HEALTH: 0"
+	else:
+		hp_label.text = "HEALTH: " + str(GameManager.player.HP)
+		points_label.text = "KILLS: " + str(GameManager.player_points)
 
 
 func _on_button_pressed():

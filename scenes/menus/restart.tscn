@@ -37,4 +37,17 @@ size_flags_horizontal = 8
 theme_override_font_sizes/font_size = 31
 horizontal_alignment = 1
 
+[node name="Label" type="Label" parent="." unique_id=2065169782]
+modulate = Color(0.96974915, 0, 0.20141873, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -202.5
+offset_right = 202.5
+offset_bottom = 59.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 43
+text = "YOU DIED LOSEEER!"
+horizontal_alignment = 1
+
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -7,16 +7,16 @@ var dead = false
 @export var bullet_scene: PackedScene
 @onready var anim = $AnimatedSprite2D
 @onready var hp_label: Label= $HpLabel
+@onready var hurt_box = $HurtBox
 
-
-func _ready():
-	pass
 func shoot():
 	if dead:
 			return
 	var distance= global_position.distance_to(GameManager.player.global_position)
-	if distance < 200:
-		var viewport_center: Vector2 = get_viewport().get_window().size / 2
+	if distance < 300:
+		anim.modulate = Color(0, 0, 1)
+		await get_tree().create_timer(0.40).timeout
+		anim.modulate = Color(1, 1, 1)
 		var bullet_dir: Vector2 = (GameManager.player.global_position - self.global_position).normalized()
 
 		var bullet = bullet_scene.instantiate()
@@ -36,7 +36,7 @@ func _physics_process(delta):
 		return
 	
 	var distance= global_position.distance_to(GameManager.player.global_position)
-	if distance < 300:
+	if distance < 400:
 		direction = (GameManager.player.global_position - self.global_position).normalized()
 		velocity = direction * SPEED
 		if direction:
@@ -51,15 +51,12 @@ func _physics_process(delta):
 		anim.play("idle")
 	hp_label.text = str(HP)
 	#move_and_slide()
-	
-
-
-
-
-
+	if HP <= 0:
+		death()
 
 func death():
 	GameManager.dino=null
+	hurt_box.queue_free()
 	dead = true
 	hp_label.text = str(0)
 	anim.play("death")
@@ -73,8 +70,7 @@ func hurt_flush():
 	anim.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.1).timeout
 	anim.modulate = Color(1,1,1)
-	
-	
+
 
 func _on_timer_timeout():
 	if dead:
@@ -83,11 +79,4 @@ func _on_timer_timeout():
 		shoot()
 
 
-func _on_hurt_box_area_exited(area):
-	if dead:
-			return
-	if area.name == "Area2Dbullet":
-		HP = HP - GameManager.players_bullet_damage
-		hurt_flush()
-	if HP <= 0:
-		death()
+	
