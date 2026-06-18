@@ -52,6 +52,7 @@ func death(anim:AnimatedSprite2D):
 		dead = true
 		hp_label.text = str(0)
 	hurt_box.queue_free()
+	print ("kill")
 	anim.play("death")
 	await anim.animation_finished
 	queue_free()
