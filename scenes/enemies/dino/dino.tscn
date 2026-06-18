@@ -1,0 +1,142 @@
+[gd_scene format=3 uid="uid://dk30x146svy4l"]
+
+[ext_resource type="PackedScene" uid="uid://drorxldd7etay" path="res://scenes/enemies/walking_enemy.tscn" id="1_03jrr"]
+[ext_resource type="Script" uid="uid://v6r1geg88ttd" path="res://scenes/enemies/dino/dino.gd" id="2_if4hj"]
+[ext_resource type="Texture2D" uid="uid://n48o1l6yc1j" path="res://assets_brotato_pov/DinoSprites - doux.png" id="2_omkrt"]
+[ext_resource type="PackedScene" uid="uid://b2v7ye0umgm87" path="res://scenes/bullet/dino_bullet/dino_bullet.tscn" id="3_f1nsr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f1nsr"]
+size = Vector2(22, 27.5)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f1nsr"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(336, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujlk3"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(360, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujdy1"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(384, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u53yo"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qvkgo"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uwibe"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jewk4"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(120, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_745l6"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(144, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g1nty"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(168, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qk8oo"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(192, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pkfnx"]
+atlas = ExtResource("2_omkrt")
+region = Rect2(216, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_c4e6k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f1nsr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujlk3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ujdy1")
+}],
+"loop": false,
+"name": &"death",
+"speed": 6.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u53yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qvkgo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uwibe")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 4.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jewk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_745l6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g1nty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qk8oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pkfnx")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 7.0
+}]
+
+[node name="Dino" unique_id=942232534 instance=ExtResource("1_03jrr")]
+script = ExtResource("2_if4hj")
+bullet_scene = ExtResource("3_f1nsr")
+color_flush = Color(1, 0, 0.003921569, 1)
+color_normal = Color(1, 1, 1, 1)
+HP = null
+speed = 55
+
+[node name="HurtBox" parent="." index="0" unique_id=2143176809]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0" unique_id=638570105]
+position = Vector2(0, -0.25)
+shape = SubResource("RectangleShape2D_f1nsr")
+
+[node name="HpLabel" parent="." index="2" unique_id=2055006388]
+self_modulate = Color(1, 0, 0.003921569, 1)
+offset_left = -4.0
+offset_top = -30.0
+offset_right = 4.0
+offset_bottom = -10.0
+theme_override_font_sizes/font_size = 14
+text = "2"
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3" unique_id=1489265488]
+position = Vector2(-1, -1)
+scale = Vector2(1.8, 1.8)
+sprite_frames = SubResource("SpriteFrames_c4e6k")
+animation = &"walk"
+autoplay = "idle"
+frame_progress = 0.16320907
+
+[node name="Timer" type="Timer" parent="." index="4" unique_id=1892246384]
+wait_time = 3.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

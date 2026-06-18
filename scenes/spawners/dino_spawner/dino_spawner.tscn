@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdriy015sbl3p" path="res://scenes/spawners/spawner.tscn" id="1_oyrde"]
 [ext_resource type="Script" uid="uid://dvvskud6872xu" path="res://scenes/spawners/dino_spawner/dino_spawner.gd" id="2_qdkey"]
-[ext_resource type="PackedScene" uid="uid://ceege75e0q4bn" path="res://scenes/enemies/shooting_dino.tscn" id="3_qdkey"]
+[ext_resource type="PackedScene" uid="uid://dk30x146svy4l" path="res://scenes/enemies/dino/dino.tscn" id="3_qdkey"]
 
 [node name="DinoSpawner" unique_id=1548942387 instance=ExtResource("1_oyrde")]
 script = ExtResource("2_qdkey")

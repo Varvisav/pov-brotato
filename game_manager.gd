@@ -1,6 +1,6 @@
 extends Node
 
-@export var level = Level
+#@export var level = Level
 var restart_scene = preload("res://scenes/menus/restart.tscn")
 var bullets_node: Node
 var dino_bullets_node: Node

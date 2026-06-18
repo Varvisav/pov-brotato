@@ -1,6 +1,5 @@
 [gd_scene format=3 uid="uid://2am8mg22i8m4"]
 
-[ext_resource type="Script" uid="uid://6cpyxgtlp8gh" path="res://scenes/level_1.gd" id="1_15mv3"]
 [ext_resource type="PackedScene" uid="uid://b10gsgjwxge8q" path="res://scenes/player/player.tscn" id="2_bswci"]
 [ext_resource type="Script" uid="uid://dqx1iuc855627" path="res://scenes/bullets_node.gd" id="3_rus8k"]
 [ext_resource type="Texture2D" uid="uid://6pssd6pslw3v" path="res://assets_brotato_pov/mainlevbuild.png" id="4_15mv3"]
@@ -1043,7 +1042,6 @@ physics_layer_0/collision_layer = 1
 sources/2 = SubResource("TileSetAtlasSource_e3sih")
 
 [node name="Level1" type="Node2D" unique_id=193006746]
-script = ExtResource("1_15mv3")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=594667601]
 tile_set = SubResource("TileSet_e3sih")

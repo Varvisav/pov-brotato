@@ -1,8 +1,7 @@
 [gd_scene format=3 uid="uid://ceege75e0q4bn"]
 
 [ext_resource type="Texture2D" uid="uid://n48o1l6yc1j" path="res://assets_brotato_pov/DinoSprites - doux.png" id="1_5ipbc"]
-[ext_resource type="Script" uid="uid://c1koom4ptnlpg" path="res://scenes/enemies/shooting_dino.gd" id="1_l333l"]
-[ext_resource type="PackedScene" uid="uid://b2v7ye0umgm87" path="res://scenes/bullet/dino_bullet/dino_bullet.tscn" id="2_mj6lr"]
+[ext_resource type="Script" uid="uid://c1koom4ptnlpg" path="res://scenes/enemies/dino/shooting_dino.gd" id="1_l333l"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oulyw"]
 
@@ -82,7 +81,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
-"speed": 5.0
+"speed": 5.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -113,7 +112,6 @@ size = Vector2(15, 26)
 
 [node name="ShootingDino" type="CharacterBody2D" unique_id=713331307]
 script = ExtResource("1_l333l")
-bullet_scene = ExtResource("2_mj6lr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1989181940]
 shape = SubResource("CapsuleShape2D_oulyw")
@@ -122,7 +120,8 @@ shape = SubResource("CapsuleShape2D_oulyw")
 position = Vector2(1, 0)
 scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_5ipbc")
-animation = &"death"
+animation = &"walk"
+flip_h = true
 
 [node name="HurtBox" type="Area2D" parent="." unique_id=1509672861]
 collision_layer = 2

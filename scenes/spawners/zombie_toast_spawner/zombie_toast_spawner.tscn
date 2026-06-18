@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdriy015sbl3p" path="res://scenes/spawners/spawner.tscn" id="1_iep3s"]
 [ext_resource type="Script" uid="uid://rfiiarbm4p5g" path="res://scenes/spawners/zombie_toast_spawner/zombie_toast_spawner.gd" id="2_4q0em"]
-[ext_resource type="PackedScene" uid="uid://dls652vw87ee3" path="res://scenes/enemies/zombie_toast.tscn" id="3_4q0em"]
+[ext_resource type="PackedScene" uid="uid://4kcxbvixqkc0" path="res://scenes/enemies/zombie_toast/zombie_toast.tscn" id="3_4q0em"]
 
 [node name="ZombieToastSpawner" unique_id=1548942387 instance=ExtResource("1_iep3s")]
 script = ExtResource("2_4q0em")

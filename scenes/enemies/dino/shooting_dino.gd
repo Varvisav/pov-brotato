@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name Dino
+class_name Dinor
 var direction: Vector2
 const SPEED: int = 50
 var HP: int = 2
@@ -55,7 +55,6 @@ func _physics_process(delta):
 		death()
 
 func death():
-	GameManager.dino=null
 	hurt_box.queue_free()
 	dead = true
 	hp_label.text = str(0)
@@ -77,6 +76,3 @@ func _on_timer_timeout():
 			return
 	if GameManager.player != null:
 		shoot()
-
-
-	
