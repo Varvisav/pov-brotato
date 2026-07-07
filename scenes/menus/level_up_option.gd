@@ -1,4 +1,4 @@
-class_name LevelUpOption 
+class_name LevelUpOption
 extends VBoxContainer
 
 @onready var slect_button: Button = %SelectButton

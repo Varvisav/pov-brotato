@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelUpList" format=3 uid="uid://cttbookehjk71"]
+
+[ext_resource type="Script" uid="uid://b526jk4psrpx0" path="res://scenes/menus/level_up_option_data.gd" id="1_wgre0"]
+[ext_resource type="Resource" uid="uid://drrxnyr2m7oae" path="res://const_data/level_ups/damage_up_option.tres" id="2_cpina"]
+[ext_resource type="Script" uid="uid://djycx4nb8vtrh" path="res://const_data/level_up_list.gd" id="2_vlspq"]
+[ext_resource type="Resource" uid="uid://dixjbv4iu5lrl" path="res://const_data/level_ups/speed_up_option.tres" id="3_meo3o"]
+[ext_resource type="Resource" uid="uid://b5ox2s8gigssh" path="res://const_data/level_ups/health_up_option.tres" id="4_gejho"]
+
+[resource]
+script = ExtResource("2_vlspq")
+level_ups = Array[ExtResource("1_wgre0")]([ExtResource("2_cpina"), ExtResource("3_meo3o"), ExtResource("4_gejho")])
+metadata/_custom_type_script = "uid://djycx4nb8vtrh"
