@@ -7,4 +7,3 @@ func _ready():
 
 func _on_area_2_dbullet_area_entered(area):
 	deal_damage(area, area.get_parent())
-	

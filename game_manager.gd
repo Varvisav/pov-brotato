@@ -9,24 +9,22 @@ var zombie_toast: ZombieToast
 var dino: Dino
 var enemy = [zombie_toast, dino]
 var hud: Hud
-var level_ups: Array[LevelUpOptionData] = [
-	preload("res://scenes/menus/resources/health_up_option.tres"),
-	preload("res://scenes/menus/resources/damage_up_option.tres")
-]
+
+var level_up_list: LevelUpList = preload("res://const_data/level_ups.tres")
 
 func _ready() -> void:
 	SignalBus.level_up.connect(on_level_up)
 	process_mode = PROCESS_MODE_ALWAYS
 	
-var player_points: int: 
+var player_points: int:
 	get:
 		return game_stats.player_points
 	set(value):
 		game_stats.player_points = value
-		if value%1==0:
+		if value % 1 == 0:
 			show_level_up_interface()
 	
-var game_stats: GameStats = GameStats.new() 
+var game_stats: GameStats = GameStats.new()
 
 func show_game_over():
 	var restart = restart_scene.instantiate()
@@ -38,7 +36,7 @@ func start_game():
 	
 func quit():
 	get_tree().quit()
-	
+
 	
 func spawn_bullet(bullet: PlayerBullet):
 	bullets_node.add_child(bullet)
@@ -52,7 +50,7 @@ func spawn_bomb_bullets(bomb_bullet):
 	
 
 func player_hurt():
-	if player.HP <=0:
+	if player.HP <= 0:
 		pass
 
 func up_score():
@@ -60,21 +58,19 @@ func up_score():
 
 
 func show_level_up_interface():
-	#get_tree().paused = true
-	var level_up_interface:=LevelUpInterface.new_instance(level_ups)
-	add_child(level_up_interface)
+	get_tree().paused = true
+	var level_up_interface := LevelUpInterface.new_instance(level_up_list.level_ups)
+	hud.add_child(level_up_interface)
 	
 
 func on_level_up(level_up_enum: LevelUpOptionData.LevelUpEnum):
-	return
-	match level_up_enum: 
+	match level_up_enum:
 		LevelUpOptionData.LevelUpEnum.DAMAGE_UP:
-			game_stats.damage_factor+=3
+			game_stats.damage_factor += 3
 		LevelUpOptionData.LevelUpEnum.SPEED_UP:
-			game_stats.speed_factor+=3
+			game_stats.speed_factor += 3
 		LevelUpOptionData.LevelUpEnum.HEALTH_UP:
-			game_stats.health_factor+=5
+			SignalBus.heal.emit(3)
 		_:
 			push_error("level up not implemented")
 	get_tree().paused = false
-

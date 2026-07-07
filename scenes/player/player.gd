@@ -12,6 +12,7 @@ func _input(_event):
 
 func _ready():
 	GameManager.player = self
+	SignalBus.heal.connect(_on_heal)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -23,17 +24,20 @@ func _physics_process(_delta: float) -> void:
 	if direction:
 		anim.play("walk")
 	else:
-		anim.play("idle") 
+		anim.play("idle")
 	turn_sprite(direction)
 	move_and_slide()
 	if GameManager.player.HP <= 0:
 		death()
 	
 
+func _on_heal(value: int):
+	HP += value
+
 func turn_sprite(dir):
 	if dir.x < 0:
 		anim.flip_h = true
-	elif dir.x >0:
+	elif dir.x > 0:
 		anim.flip_h = false
 
 
@@ -46,13 +50,14 @@ func _shoot():
 	var bullet: PlayerBullet = bullet_scene.instantiate()
 	bullet.direction = bullet_dir
 	bullet.global_position = global_position
+	bullet.damage *= GameManager.game_stats.damage_factor
 	GameManager.spawn_bullet(bullet)
 
 func death():
 	alive = false
 	anim.play("death")
 	await anim.animation_finished
-	GameManager.player=null
+	GameManager.player = null
 	var tween = create_tween()
 	#await get_tree().create_timer(2).timeout
 	tween.tween_property(camera, "zoom", Vector2(5, 5), 300)
@@ -63,9 +68,8 @@ func death():
 func hurt_flush():
 	anim.modulate = Color(1, 0, 0)
 	await get_tree().create_timer(0.17).timeout
-	anim.modulate = Color(1,1,1)
+	anim.modulate = Color(1, 1, 1)
 	
-
 
 #func _on_hurt_box_area_entered(area):
 	#if alive == false:

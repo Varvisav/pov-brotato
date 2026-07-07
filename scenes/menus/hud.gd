@@ -5,6 +5,9 @@ class_name Hud
 
 #var player_helth = GameManager.player_HP
 
+func _ready() -> void:
+	GameManager.hud = self
+
 func _process(_delta):
 	if !is_instance_valid(GameManager.player):
 		hp_label.text = "HEALTH: 0"
@@ -14,4 +17,4 @@ func _process(_delta):
 
 
 func _on_button_pressed():
-	pass # Replace with function body.
+	get_tree().paused = not get_tree().paused
