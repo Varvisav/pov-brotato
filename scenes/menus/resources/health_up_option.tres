@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelUpOptionData" format=3 uid="uid://b5ox2s8gigssh"]
+
+[ext_resource type="Script" uid="uid://b526jk4psrpx0" path="res://scenes/menus/level_up_option_data.gd" id="1_r6u71"]
+
+[resource]
+script = ExtResource("1_r6u71")
+info = "health"
+level_up_enum = 1
+metadata/_custom_type_script = "uid://b526jk4psrpx0"

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://7nta2n8ce7ur"
-path="res://.godot/imported/ZombieToast_hurt.png-99e8017388495a3aae1784a6d31bdd46.ctex"
+path="res://.godot/imported/ZombieToast_hurt.png-01b4a0804f69307b9a056a68db307b67.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets_brotato_pov/ZombieToast_hurt.png"
-dest_files=["res://.godot/imported/ZombieToast_hurt.png-99e8017388495a3aae1784a6d31bdd46.ctex"]
+source_file="res://assets/ZombieToast_hurt.png"
+dest_files=["res://.godot/imported/ZombieToast_hurt.png-01b4a0804f69307b9a056a68db307b67.ctex"]
 
 [params]
 

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://kslrk37vwh23"
-path="res://.godot/imported/Dungeon_brick_wall_grey.png.png-e544b46ec19ccc83584a88220f1bc189.ctex"
+path="res://.godot/imported/Dungeon_brick_wall_grey.png.png-22a35952c08778cb1ff0120eefb5dfc3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets_brotato_pov/Dungeon_brick_wall_grey.png.png"
-dest_files=["res://.godot/imported/Dungeon_brick_wall_grey.png.png-e544b46ec19ccc83584a88220f1bc189.ctex"]
+source_file="res://assets/Dungeon_brick_wall_grey.png.png"
+dest_files=["res://.godot/imported/Dungeon_brick_wall_grey.png.png-22a35952c08778cb1ff0120eefb5dfc3.ctex"]
 
 [params]
 

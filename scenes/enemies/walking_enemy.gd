@@ -14,7 +14,7 @@ var direction: Vector2
 var dead = false
 #var anim:AnimatedSprite2D
 
-func being(seeing_player_distance: int, anim:AnimatedSprite2D, right:bool):
+func palyer_following(seeing_player_distance: int, anim:AnimatedSprite2D, right:bool):
 	if dead:
 		HP = 0
 		return
@@ -47,12 +47,12 @@ func being(seeing_player_distance: int, anim:AnimatedSprite2D, right:bool):
 	
 
 
-func death(anim:AnimatedSprite2D):
-	if HP <= 0:
-		dead = true
-		hp_label.text = str(0)
+func die(anim:AnimatedSprite2D):
+	if dead:
+		return
+	dead = true
+	hp_label.text = str(0)
 	hurt_box.queue_free()
-	print ("kill")
 	anim.play("death")
 	await anim.animation_finished
 	queue_free()

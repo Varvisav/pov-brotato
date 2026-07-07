@@ -11,12 +11,12 @@ func move_bullet(delta):
 	
 
 func deal_damage(object, body):
-	if object.name == "HurtBox":
+	if object.name == "HurtBox" and body:
 		self.queue_free()
 		body.HP -= damage
 		body.hurt_flush()
 
-func bullet_being(dissapear_time:float):
+func bullet_dissapearing(dissapear_time:float):
 	rotation = direction.angle()
 	await get_tree().create_timer(dissapear_time).timeout
 	var tween = create_tween()

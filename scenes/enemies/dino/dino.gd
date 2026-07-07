@@ -10,13 +10,13 @@ func _process(delta):
 	if dead:
 		HP = 0
 		return
-	being(350, anim, false)
+	palyer_following(350, anim, false)
 	var threshold = GameManager.player_points / 15
 	if threshold >last_threshold:
 		last_threshold=threshold
 		timer.wait_time = max(0.9, timer.wait_time - 0.5)
 	if HP <= 0:
-		death(anim)
+		die(anim)
 	
 
 func shoot():

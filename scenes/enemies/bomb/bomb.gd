@@ -13,9 +13,9 @@ func boom():
 		velocity = Vector2.ZERO
 		anim.play("idle")
 		return
-	anim.play("boom")
+	#anim.play("boom")
 	dead = true
-	await anim.animation_finished
+	#await anim.animation_finished
 	queue_free()
 	for i in bullets_count:
 		var angle = i * TAU / bullets_count
@@ -35,4 +35,6 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
+	if timer.time_left == 1.0:
+		anim.play("boom")
 	boom()

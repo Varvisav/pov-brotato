@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LevelUpOptionData" format=3 uid="uid://dixjbv4iu5lrl"]
+
+[ext_resource type="Script" uid="uid://b526jk4psrpx0" path="res://scenes/menus/level_up_option_data.gd" id="1_lhl44"]
+
+[resource]
+script = ExtResource("1_lhl44")
+info = "speed"
+metadata/_custom_type_script = "uid://b526jk4psrpx0"

@@ -19,20 +19,24 @@ func _physics_process(_delta: float) -> void:
 		HP = 0
 		return
 	var direction = Input.get_vector("left", "right", "up", "down")
-	velocity = direction * GameManager.player_speed
+	velocity = direction * GameManager.game_stats.player_speed * GameManager.game_stats.speed_factor
 	if direction:
 		anim.play("walk")
 	else:
 		anim.play("idle") 
-	if direction.x < 0:
-		anim.flip_h = true
-	elif direction.x >0:
-		anim.flip_h = false
+	turn_sprite(direction)
 	move_and_slide()
 	if GameManager.player.HP <= 0:
 		death()
 	
-	
+
+func turn_sprite(dir):
+	if dir.x < 0:
+		anim.flip_h = true
+	elif dir.x >0:
+		anim.flip_h = false
+
+
 func _shoot():
 	if alive == false:
 		return
@@ -51,7 +55,7 @@ func death():
 	GameManager.player=null
 	var tween = create_tween()
 	#await get_tree().create_timer(2).timeout
-	tween.tween_property(camera, "zoom", Vector2(4, 4), 60)
+	tween.tween_property(camera, "zoom", Vector2(5, 5), 300)
 	
 	GameManager.show_game_over()
 	

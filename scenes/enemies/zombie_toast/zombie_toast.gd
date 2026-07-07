@@ -6,7 +6,7 @@ func _process(delta):
 	if dead:
 		HP = 0
 		return
-	being(240, anim, true)
+	palyer_following(240, anim, true)
 
 
 func _on_hurt_for_player_body_entered(body):
@@ -24,4 +24,4 @@ func hurt_flush():
 	await get_tree().create_timer(0.1).timeout
 	anim.modulate = color_normal
 	if HP <= 0:
-			death(anim)
+			die(anim)

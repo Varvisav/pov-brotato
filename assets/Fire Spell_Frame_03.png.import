@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b32ohnqbfyawy"
-path="res://.godot/imported/Fire Spell_Frame_03.png-e08666ce55a6c3ff1b7c639ee9767a86.ctex"
+path="res://.godot/imported/Fire Spell_Frame_03.png-8fe25ee4e794bd432352be264fb30500.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets_brotato_pov/firebomg/Fire Spell_Frame_03.png"
-dest_files=["res://.godot/imported/Fire Spell_Frame_03.png-e08666ce55a6c3ff1b7c639ee9767a86.ctex"]
+source_file="res://assets/Fire Spell_Frame_03.png"
+dest_files=["res://.godot/imported/Fire Spell_Frame_03.png-8fe25ee4e794bd432352be264fb30500.ctex"]
 
 [params]
 
