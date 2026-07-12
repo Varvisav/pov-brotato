@@ -9,6 +9,7 @@ class_name WalkingEnemy
 @export var color_normal: Color
 @export var HP: int = 2
 @export var speed: int = 100
+@export var coin_scene: PackedScene
 
 var direction: Vector2
 var dead = false
@@ -55,5 +56,9 @@ func die(anim:AnimatedSprite2D):
 	hurt_box.queue_free()
 	anim.play("death")
 	await anim.animation_finished
+	var coin = coin_scene.instantiate()
+	coin.global_position = global_position
+	get_parent().add_child(coin)
 	queue_free()
 	GameManager.up_score()
+	

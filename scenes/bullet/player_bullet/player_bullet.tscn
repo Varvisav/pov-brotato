@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://11r37pd1q7lx" path="res://scenes/bullet/player_bullet/player_bullet.gd" id="1_8i8dt"]
 [ext_resource type="PackedScene" uid="uid://dqvm7hqflk6t1" path="res://scenes/bullet/bullet.tscn" id="1_g3bk4"]
-[ext_resource type="Texture2D" uid="uid://dqnui7u5hye60" path="res://assets/bullet5.png" id="2_5q1pe"]
+[ext_resource type="Texture2D" uid="uid://dqnui7u5hye60" path="res://assets/bullets/bullet5.png" id="2_5q1pe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_y25gk"]
 radius = 8.0

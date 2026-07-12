@@ -2,9 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cu4t3a04ik8qu" path="res://scenes/enemies/bomb/bomb.gd" id="1_us5qt"]
 [ext_resource type="PackedScene" uid="uid://degmf7xmnguny" path="res://scenes/bullet/bomb_boom/bomb_bullet.tscn" id="2_yhgdp"]
-[ext_resource type="Texture2D" uid="uid://dhcb2ka3v72yy" path="res://assets/bomb.png" id="3_qpkla"]
-[ext_resource type="Texture2D" uid="uid://b1evfodsmqg0k" path="res://assets/bomb45.png" id="4_ul4ab"]
-[ext_resource type="Texture2D" uid="uid://b1aon0vy23yvx" path="res://assets/bomb46.png" id="5_l7x1y"]
+[ext_resource type="Texture2D" uid="uid://dhcb2ka3v72yy" path="res://assets/enemies/bombshit/bomb.png" id="3_qpkla"]
+[ext_resource type="Texture2D" uid="uid://b0xru8c0a2c40" path="res://assets/enemies/bombshit/BOMB_DMG.png" id="3_yhgdp"]
+[ext_resource type="Texture2D" uid="uid://b1evfodsmqg0k" path="res://assets/enemies/bombshit/bomb45.png" id="4_ul4ab"]
+[ext_resource type="Texture2D" uid="uid://b1aon0vy23yvx" path="res://assets/enemies/bombshit/bomb46.png" id="5_l7x1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsxe1"]
 size = Vector2(22.5, 21)
@@ -149,6 +150,12 @@ animations = [{
 script = ExtResource("1_us5qt")
 bullet_scene = ExtResource("2_yhgdp")
 
+[node name="BombDmg" type="Sprite2D" parent="." unique_id=1839174721]
+modulate = Color(1, 1, 1, 0.3137255)
+position = Vector2(0, -1)
+scale = Vector2(0.72, 0.72)
+texture = ExtResource("3_yhgdp")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1559767179]
 shape = SubResource("RectangleShape2D_fsxe1")
 
@@ -162,7 +169,7 @@ frame = 12
 frame_progress = 1.0
 
 [node name="Timer" type="Timer" parent="." unique_id=1624093386]
-wait_time = 2.1
+wait_time = 2.0
 autostart = true
 
 [node name="TimerLabel" type="Label" parent="." unique_id=2059262288]

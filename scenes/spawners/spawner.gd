@@ -3,9 +3,9 @@ class_name Spawner
 @export var enemies_scene: PackedScene
 @onready var timer = $Timer
 
-const map_min_x = 25
-const  map_max_x = 1160
-const map_min_y = 25
+const map_min_x = 30
+const  map_max_x = 1150
+const map_min_y = 30
 const map_max_y = 620
 
 #enemy_scene
@@ -23,8 +23,8 @@ func spawn_enemy(min_range, max_range):
 	get_tree().current_scene.add_child(enemy)
 
 var last_threshold =0 
-func functioning(points_number, timer_min: float, removed_seconds: float):
-	var threshold = GameManager.player_points / points_number
+func functioning(kills, timer_min: float, removed_seconds: float):
+	var threshold = GameManager.player_points / kills
 	if threshold >last_threshold:
 		last_threshold=threshold
 		timer.wait_time = max(timer_min, timer.wait_time - removed_seconds)

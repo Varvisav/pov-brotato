@@ -3,6 +3,7 @@ class_name Player extends CharacterBody2D
 @export var bullet_scene: PackedScene
 @onready var anim = $AnimatedSprite2D
 @onready var camera = $Camera2D
+@onready var slow_effect_timer = $SlowTimer
 var alive = true
 var HP: int = 40
 
@@ -44,6 +45,8 @@ func turn_sprite(dir):
 func _shoot():
 	if alive == false:
 		return
+	if GameManager.can_shoot == false:
+		return
 	var mouse_pos: Vector2 = get_global_mouse_position()
 	var bullet_dir: Vector2 = (mouse_pos - self.global_position).normalized()
 
@@ -71,8 +74,16 @@ func hurt_flush():
 	anim.modulate = Color(1, 1, 1)
 	
 
-#func _on_hurt_box_area_entered(area):
-	#if alive == false:
-	#		return
-	#if area.name == "Area2D":
-	#	hurt_flush()
+func slowing_effect():
+	GameManager.game_stats.player_speed = GameManager.game_stats.player_speed * 0.55
+	slow_effect_timer.start()
+	GameManager.hud.slow_effect_label.visible = true
+	if GameManager.spider != null:
+		GameManager.spider.player_already_slowed = true
+
+
+func _on_slow_timer_timeout():
+	GameManager.game_stats.player_speed = GameManager.game_stats.player_speed / 0.55
+	slow_effect_timer.stop()
+	GameManager.hud.slow_effect_label.visible = false
+	GameManager.spider.player_already_slowed = false

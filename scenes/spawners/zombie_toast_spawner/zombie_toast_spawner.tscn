@@ -9,4 +9,4 @@ script = ExtResource("2_4q0em")
 enemies_scene = ExtResource("3_4q0em")
 
 [node name="Timer" parent="." index="0" unique_id=606788311]
-wait_time = 6.5
+wait_time = 18.0

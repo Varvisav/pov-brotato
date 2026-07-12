@@ -16,19 +16,35 @@ grow_horizontal = 0
 text = "PAUSE"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=858375578]
-offset_right = 141.0
-offset_bottom = 139.0
+offset_right = 263.0
+offset_bottom = 172.0
+
+[node name="SlowEffectLabel" type="Label" parent="." unique_id=38980191]
+visible = false
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -96.0
+offset_right = 254.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 40
 
 [node name="PlayerHpLabel" type="Label" parent="." unique_id=437285707]
-offset_right = 144.0
-offset_bottom = 50.0
-size_flags_vertical = 1
+offset_right = 263.0
+offset_bottom = 55.0
+size_flags_vertical = 3
 theme_override_font_sizes/font_size = 40
 
-[node name="PlayerPointsLabel" type="Label" parent="." unique_id=1098034008]
-offset_top = 50.0
-offset_right = 143.0
-offset_bottom = 100.0
+[node name="PlayerCointsLabel" type="Label" parent="." unique_id=402581145]
+offset_top = 47.0
+offset_right = 263.0
+offset_bottom = 160.0
 theme_override_font_sizes/font_size = 40
+text = "
+"
 
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

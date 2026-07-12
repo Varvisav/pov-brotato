@@ -1,0 +1,149 @@
+[gd_scene format=3 uid="uid://b04vh8dw8vo5j"]
+
+[ext_resource type="PackedScene" uid="uid://drorxldd7etay" path="res://scenes/enemies/walking_enemy.tscn" id="1_qu2og"]
+[ext_resource type="Script" uid="uid://bqhfutrr2rd0n" path="res://scenes/enemies/spider/spider.gd" id="2_ta5jr"]
+[ext_resource type="PackedScene" uid="uid://ddrbtx12ctc4x" path="res://scenes/bullet/spider_bullet/spiderbullet.tscn" id="3_0v4vh"]
+[ext_resource type="Texture2D" uid="uid://bh88vblx7yx1x" path="res://assets/enemies/spider/spider_idle.png" id="3_qljqk"]
+[ext_resource type="Texture2D" uid="uid://ddkpjhs8q6tj2" path="res://assets/enemies/spider/spider-chp-1-makeitmove.png" id="3_ux438"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ov6yh"]
+atlas = ExtResource("3_qljqk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dtavn"]
+atlas = ExtResource("3_qljqk")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m53er"]
+atlas = ExtResource("3_qljqk")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ux438"]
+atlas = ExtResource("3_ux438")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qljqk"]
+atlas = ExtResource("3_ux438")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0v4vh"]
+atlas = ExtResource("3_ux438")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oq8ch"]
+atlas = ExtResource("3_ux438")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3v4i1"]
+atlas = ExtResource("3_ux438")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cfybg"]
+atlas = ExtResource("3_ux438")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1072l"]
+atlas = ExtResource("3_ux438")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yqokj"]
+atlas = ExtResource("3_ux438")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfw45"]
+atlas = ExtResource("3_ux438")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m53er"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov6yh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ov6yh")
+}],
+"loop": false,
+"name": &"death",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dtavn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m53er")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 3.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ux438")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qljqk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0v4vh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oq8ch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3v4i1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cfybg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1072l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yqokj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfw45")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0v4vh"]
+size = Vector2(46, 30)
+
+[node name="Spider" unique_id=942232534 instance=ExtResource("1_qu2og")]
+scale = Vector2(0.5, 0.5)
+script = ExtResource("2_ta5jr")
+bullet_scene = ExtResource("3_0v4vh")
+color_flush = Color(1, 0, 0, 1)
+color_normal = Color(1, 1, 1, 1)
+HP = 6
+speed = 50
+
+[node name="HurtBox" parent="." index="0" unique_id=2143176809]
+collision_layer = 2
+
+[node name="CollisionShape2D" parent="HurtBox" index="0" unique_id=638570105]
+position = Vector2(0, 2)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3" unique_id=720876062]
+position = Vector2(2, 8)
+sprite_frames = SubResource("SpriteFrames_m53er")
+animation = &"death"
+frame_progress = 0.6190061
+
+[node name="ShootingTimer" type="Timer" parent="." index="4" unique_id=34301387]
+wait_time = 9.0
+autostart = true
+
+[node name="HurtForPlayer" type="Area2D" parent="." index="5" unique_id=1741195220]
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HurtForPlayer" index="0" unique_id=753004727]
+position = Vector2(1, -3)
+shape = SubResource("RectangleShape2D_0v4vh")
+
+[connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
+[connection signal="body_entered" from="HurtForPlayer" to="." method="_on_hurt_for_player_body_entered"]

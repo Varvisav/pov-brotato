@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dqvm7hqflk6t1" path="res://scenes/bullet/bullet.tscn" id="1_7cy0m"]
 [ext_resource type="Script" uid="uid://dj175xkgj1pca" path="res://scenes/bullet/bomb_boom/bomb_bullet.gd" id="2_vftcm"]
-[ext_resource type="Texture2D" uid="uid://c8v5jckpe4mcl" path="res://assets_brotato_pov/firebomg/Fire Spell_Frame_05.png" id="2_xpj7y"]
+[ext_resource type="Texture2D" uid="uid://c8v5jckpe4mcl" path="res://assets/bullets/fire_bullets/Fire Spell_Frame_05.png" id="2_xpj7y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vftcm"]
 radius = 4.0
@@ -10,7 +10,7 @@ height = 22.0
 
 [node name="BombBullet" unique_id=2126284509 instance=ExtResource("1_7cy0m")]
 script = ExtResource("2_vftcm")
-BULLET_SPEED = 210
+BULLET_SPEED = 227
 damage = 4
 
 [node name="Sprite2D" parent="." index="0" unique_id=896776532]

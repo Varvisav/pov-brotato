@@ -6,14 +6,14 @@ func _process(delta):
 	if dead:
 		HP = 0
 		return
-	palyer_following(240, anim, true)
+	palyer_following(310, anim, true)
 
 
 func _on_hurt_for_player_body_entered(body):
 	if dead:
 		return
 	if body.name == "CharacterBody2D":
-		GameManager.player.HP -=2
+		GameManager.player.HP -=3
 		GameManager.player.hurt_flush()
 
 

@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bkr5f268biii1"]
+
+[ext_resource type="PackedScene" uid="uid://bdriy015sbl3p" path="res://scenes/spawners/spawner.tscn" id="1_opffb"]
+[ext_resource type="PackedScene" uid="uid://b04vh8dw8vo5j" path="res://scenes/enemies/spider/spider.tscn" id="2_8jtb8"]
+[ext_resource type="Script" uid="uid://4vmpmxi11c6k" path="res://scenes/spawners/spider_spawner/spider_spawner.gd" id="2_opffb"]
+
+[node name="Spawner" unique_id=1548942387 instance=ExtResource("1_opffb")]
+script = ExtResource("2_opffb")
+enemies_scene = ExtResource("2_8jtb8")
+
+[node name="Timer" parent="." index="0" unique_id=606788311]
+wait_time = 36.0

@@ -14,17 +14,16 @@ func _process(delta):
 	var threshold = GameManager.player_points / 15
 	if threshold >last_threshold:
 		last_threshold=threshold
-		timer.wait_time = max(0.9, timer.wait_time - 0.5)
+		timer.wait_time = max(0.9, timer.wait_time - 0.4)
 	if HP <= 0:
 		die(anim)
 	
 
 func shoot():
 	if dead:
-		
 		return
 	var distance= global_position.distance_to(GameManager.player.global_position)
-	if distance < 270:
+	if distance < 295:
 		anim.modulate = Color(0, 0, 1)
 		await get_tree().create_timer(0.40).timeout
 		anim.modulate = Color(1, 1, 1)

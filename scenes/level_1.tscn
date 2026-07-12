@@ -2,10 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://b10gsgjwxge8q" path="res://scenes/player/player.tscn" id="2_bswci"]
 [ext_resource type="Script" uid="uid://dqx1iuc855627" path="res://scenes/bullets_node.gd" id="3_rus8k"]
-[ext_resource type="Texture2D" uid="uid://6pssd6pslw3v" path="res://assets_brotato_pov/mainlevbuild.png" id="4_15mv3"]
+[ext_resource type="Texture2D" uid="uid://6pssd6pslw3v" path="res://assets/mainlevbuild.png" id="4_15mv3"]
 [ext_resource type="PackedScene" uid="uid://blp1nftrwk7t4" path="res://scenes/menus/hud.tscn" id="5_4nkto"]
 [ext_resource type="PackedScene" uid="uid://dd05elv4drdda" path="res://scenes/spawners/dino_spawner/dino_spawner.tscn" id="7_15mv3"]
 [ext_resource type="PackedScene" uid="uid://busnv50su4g0p" path="res://scenes/spawners/bomb_SPAWNER/bomb_spawner.tscn" id="7_pa8r4"]
+[ext_resource type="PackedScene" uid="uid://bkr5f268biii1" path="res://scenes/spawners/spider_spawner/spider_spawner.tscn" id="8_15mv3"]
 [ext_resource type="PackedScene" uid="uid://bi6y7frwsy6d6" path="res://scenes/spawners/zombie_toast_spawner/zombie_toast_spawner.tscn" id="8_e3sih"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3sih"]
@@ -685,9 +686,13 @@ texture = ExtResource("4_15mv3")
 49:20/0 = 0
 50:20/0 = 0
 52:20/0 = 0
+52:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 53:20/0 = 0
+53:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 55:20/0 = 0
+55:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 56:20/0 = 0
+56:20/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 58:20/0 = 0
 59:20/0 = 0
 61:20/0 = 0
@@ -736,7 +741,9 @@ texture = ExtResource("4_15mv3")
 53:21/0 = 0
 53:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 55:21/0 = 0
+55:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 56:21/0 = 0
+56:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 58:21/0 = 0
 59:21/0 = 0
 61:21/0 = 0
@@ -1057,7 +1064,10 @@ script = ExtResource("3_rus8k")
 
 [node name="ZombieToastSpawner" parent="." unique_id=1411390931 instance=ExtResource("8_e3sih")]
 
+[node name="Hud" parent="." unique_id=2104495217 instance=ExtResource("5_4nkto")]
+
 [node name="CharacterBody2D" parent="." unique_id=1497356721 instance=ExtResource("2_bswci")]
+visibility_layer = 7
 position = Vector2(593, 314)
 
-[node name="Hud" parent="." unique_id=2104495217 instance=ExtResource("5_4nkto")]
+[node name="Spawner" parent="." unique_id=508203789 instance=ExtResource("8_15mv3")]

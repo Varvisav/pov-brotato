@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://drorxldd7etay" path="res://scenes/enemies/walking_enemy.tscn" id="1_ms5jn"]
 [ext_resource type="Script" uid="uid://dqrq4iw18fr80" path="res://scenes/enemies/zombie_toast/zombie_toast.gd" id="2_l4vpl"]
-[ext_resource type="Texture2D" uid="uid://mwni62tqirn6" path="res://assets/ZombieToast.png" id="3_jhldp"]
+[ext_resource type="Texture2D" uid="uid://mwni62tqirn6" path="res://assets/enemies/zombie_toast_shit/ZombieToast.png" id="3_jhldp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_u1f5i"]
 size = Vector2(12, 17)
@@ -155,10 +155,12 @@ animations = [{
 size = Vector2(19, 17)
 
 [node name="ZombieToast" unique_id=942232534 instance=ExtResource("1_ms5jn")]
+z_index = 2
 script = ExtResource("2_l4vpl")
 color_flush = Color(1, 0, 0.003921569, 1)
 color_normal = Color(1, 1, 1, 1)
-speed = 30
+HP = 30
+speed = 35
 
 [node name="HurtBox" parent="." index="0" unique_id=2143176809]
 collision_layer = 2

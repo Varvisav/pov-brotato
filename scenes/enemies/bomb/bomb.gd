@@ -35,6 +35,6 @@ func _physics_process(delta):
 
 
 func _on_timer_timeout():
-	if timer.time_left == 1.0:
+	if timer.time_left == 0.9:
 		anim.play("boom")
 	boom()
