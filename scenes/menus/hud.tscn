@@ -5,7 +5,8 @@
 [node name="Hud" type="CanvasLayer" unique_id=2104495217]
 script = ExtResource("1_ahhtf")
 
-[node name="Button" type="Button" parent="." unique_id=570372188]
+[node name="PauseButton" type="Button" parent="." unique_id=570372188]
+unique_name_in_owner = true
 process_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -45,6 +46,5 @@ theme_override_font_sizes/font_size = 40
 text = "
 "
 
-[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="mouse_entered" from="PauseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="PauseButton" to="." method="_on_button_mouse_exited"]

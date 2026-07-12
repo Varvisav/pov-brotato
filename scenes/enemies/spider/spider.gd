@@ -3,7 +3,6 @@ class_name Spider
 @onready var anim = $AnimatedSprite2D
 @export var bullet_scene: PackedScene
 @onready var shooting_timer = $ShootingTimer
-var player_already_slowed = false
 var last_threshold =0
 
 func _ready():
@@ -33,7 +32,7 @@ func hurt_flush():
 func shoot():
 	if dead:
 		return
-	if player_already_slowed:
+	if GameManager.player_already_slowed:
 		return
 	var distance= global_position.distance_to(GameManager.player.global_position)
 	if distance < 300:

@@ -75,15 +75,16 @@ func hurt_flush():
 	
 
 func slowing_effect():
+	if GameManager.player_already_slowed:
+		return
 	GameManager.game_stats.player_speed = GameManager.game_stats.player_speed * 0.55
 	slow_effect_timer.start()
 	GameManager.hud.slow_effect_label.visible = true
 	if GameManager.spider != null:
-		GameManager.spider.player_already_slowed = true
-
-
+		GameManager.player_already_slowed = true
+	
 func _on_slow_timer_timeout():
 	GameManager.game_stats.player_speed = GameManager.game_stats.player_speed / 0.55
 	slow_effect_timer.stop()
 	GameManager.hud.slow_effect_label.visible = false
-	GameManager.spider.player_already_slowed = false
+	GameManager.player_already_slowed = false

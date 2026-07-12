@@ -3,12 +3,14 @@ extends Control
 
 @onready var level_up_options: HBoxContainer = %levelUpOptions
 @export var level_up_option_scene: PackedScene
+@onready var end_shopping_button: Button = %EndShoppingButton
 const level_up_interface_scene: PackedScene = preload("res://scenes/menus/level_up_interface.tscn")
 
 var options: Array[LevelUpOptionData]
 
 func _ready() -> void:
 	SignalBus.level_up.connect(_on_level_up)
+	end_shopping_button.pressed.connect(on_end_shopping_button_pressed)
 
 	for option: LevelUpOptionData in options:
 		var level_up_option: LevelUpOption = level_up_option_scene.instantiate()

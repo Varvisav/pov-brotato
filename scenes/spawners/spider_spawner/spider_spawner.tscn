@@ -7,6 +7,3 @@
 [node name="Spawner" unique_id=1548942387 instance=ExtResource("1_opffb")]
 script = ExtResource("2_opffb")
 enemies_scene = ExtResource("2_8jtb8")
-
-[node name="Timer" parent="." index="0" unique_id=606788311]
-wait_time = 36.0

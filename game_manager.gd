@@ -11,6 +11,7 @@ var enemy = [zombie_toast, dino]
 var hud: Hud
 var spider: Spider
 var can_shoot: bool = true
+var player_already_slowed: bool = false
 
 var level_up_list: LevelUpList = preload("res://const_data/level_ups.tres")
 
@@ -67,8 +68,8 @@ func show_level_up_interface():
 	hud.add_child(level_up_interface)
 	
 
-func on_level_up(level_up_enum: LevelUpOptionData.LevelUpEnum):
-	match level_up_enum:
+func on_level_up(level_up_data: LevelUpOptionData):
+	match level_up_data.level_up_enum:
 		LevelUpOptionData.LevelUpEnum.DAMAGE_UP:
 			game_stats.damage_factor += 0.25
 		LevelUpOptionData.LevelUpEnum.SPEED_UP:
@@ -77,4 +78,5 @@ func on_level_up(level_up_enum: LevelUpOptionData.LevelUpEnum):
 			SignalBus.heal.emit(8)
 		_:
 			push_error("level up not implemented")
+	level_up_data.cost_factor += 3
 	get_tree().paused = false

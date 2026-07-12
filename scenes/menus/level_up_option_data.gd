@@ -4,6 +4,8 @@ class_name LevelUpOptionData
 @export var info: String
 @export var level_up_enum: LevelUpEnum
 @export var icon:Texture2D
+@export var cost_factor: int
+
 
 enum LevelUpEnum{
     SPEED_UP,

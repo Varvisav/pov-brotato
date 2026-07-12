@@ -3,12 +3,14 @@ class_name Hud
 @onready var hp_label: Label = $PlayerHpLabel
 @onready var coins_label: Label = $PlayerCointsLabel
 @onready var slow_effect_label: Label = $SlowEffectLabel
+@onready var pause_button: Button = %PauseButton
 var pause_is_holding_down:bool = false
 #var player_helth = GameManager.player_HP
 
 
 func _ready() -> void:
 	GameManager.hud = self
+	pause_button.pressed.connect(_on_paused_button_pressed)
 
 func _process(_delta):
 	if !is_instance_valid(GameManager.player):
@@ -19,12 +21,11 @@ func _process(_delta):
 		slow_effect_label.text = "SLOW EFFECT: " + str(int(GameManager.player.slow_effect_timer.time_left)) + "s"
 
 
-func _on_button_pressed():
+func _on_paused_button_pressed():
 	get_tree().paused = not get_tree().paused
 
 func _on_button_mouse_entered():
 	GameManager.can_shoot = false
-
 
 func _on_button_mouse_exited():
 		GameManager.can_shoot = true

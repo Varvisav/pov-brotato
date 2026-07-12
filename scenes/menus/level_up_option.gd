@@ -11,4 +11,4 @@ func _ready():
 
 
 func _on_select_button_pressed():
-	SignalBus.level_up.emit(level_up_option_data.level_up_enum)
+	SignalBus.level_up.emit(level_up_option_data)
