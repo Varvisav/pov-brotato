@@ -20,8 +20,9 @@ func _process(delta):
 	
 
 func shoot():
-	if dead:
+	if dead or !is_instance_valid(GameManager.player):
 		return
+
 	var distance= global_position.distance_to(GameManager.player.global_position)
 	if distance < 295:
 		anim.modulate = Color(0, 0, 1)

@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://drorxldd7etay" path="res://scenes/enemies/walking_enemy.tscn" id="1_qu2og"]
 [ext_resource type="Script" uid="uid://bqhfutrr2rd0n" path="res://scenes/enemies/spider/spider.gd" id="2_ta5jr"]
 [ext_resource type="PackedScene" uid="uid://ddrbtx12ctc4x" path="res://scenes/bullet/spider_bullet/spiderbullet.tscn" id="3_0v4vh"]
-[ext_resource type="Texture2D" uid="uid://bh88vblx7yx1x" path="res://assets/enemies/spider/spider_idle.png" id="3_qljqk"]
-[ext_resource type="Texture2D" uid="uid://ddkpjhs8q6tj2" path="res://assets/enemies/spider/spider-chp-1-makeitmove.png" id="3_ux438"]
+[ext_resource type="Texture2D" uid="uid://bh88vblx7yx1x" path="res://assets/pixel_assets/enemies/spider/spider_idle.png" id="3_qljqk"]
+[ext_resource type="Texture2D" uid="uid://ddkpjhs8q6tj2" path="res://assets/pixel_assets/enemies/spider/spider-chp-1-makeitmove.png" id="3_ux438"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ov6yh"]
 atlas = ExtResource("3_qljqk")
@@ -120,7 +120,7 @@ script = ExtResource("2_ta5jr")
 bullet_scene = ExtResource("3_0v4vh")
 color_flush = Color(1, 0, 0, 1)
 color_normal = Color(1, 1, 1, 1)
-HP = 6
+HP = 10
 speed = 50
 
 [node name="HurtBox" parent="." index="0" unique_id=2143176809]
@@ -128,6 +128,12 @@ collision_layer = 2
 
 [node name="CollisionShape2D" parent="HurtBox" index="0" unique_id=638570105]
 position = Vector2(0, 2)
+
+[node name="HpLabel" parent="." index="2" unique_id=2055006388]
+offset_top = -38.0
+offset_right = 34.0
+offset_bottom = -17.0
+theme_override_font_sizes/font_size = 30
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3" unique_id=720876062]
 position = Vector2(2, 8)

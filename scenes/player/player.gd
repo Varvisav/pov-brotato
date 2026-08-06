@@ -3,9 +3,15 @@ class_name Player extends CharacterBody2D
 @export var bullet_scene: PackedScene
 @onready var anim = $AnimatedSprite2D
 @onready var camera = $Camera2D
-@onready var slow_effect_timer = $SlowTimer
+@onready var slow_effect_timer: Timer = $SlowTimer
+@onready var reload_timer: Timer = $ReloadTimer
 var alive = true
 var HP: int = 40
+var bullets_count: int = 30:
+	set(value):
+		bullets_count=value
+		if value == 0:
+			reload_timer.start()
 
 func _input(_event):
 	if Input.is_action_just_pressed("shoot"):
@@ -14,6 +20,7 @@ func _input(_event):
 func _ready():
 	GameManager.player = self
 	SignalBus.heal.connect(_on_heal)
+	reload_timer.timeout.connect(reload)
 	
 
 func _physics_process(_delta: float) -> void:
@@ -47,14 +54,19 @@ func _shoot():
 		return
 	if GameManager.can_shoot == false:
 		return
+	if bullets_count <= 0:
+		return
 	var mouse_pos: Vector2 = get_global_mouse_position()
 	var bullet_dir: Vector2 = (mouse_pos - self.global_position).normalized()
-
 	var bullet: PlayerBullet = bullet_scene.instantiate()
 	bullet.direction = bullet_dir
 	bullet.global_position = global_position
 	bullet.damage *= GameManager.game_stats.damage_factor
 	GameManager.spawn_bullet(bullet)
+	bullets_count -= 1
+
+func reload():
+	bullets_count =30
 
 func death():
 	alive = false
@@ -64,7 +76,6 @@ func death():
 	var tween = create_tween()
 	#await get_tree().create_timer(2).timeout
 	tween.tween_property(camera, "zoom", Vector2(5, 5), 300)
-	
 	GameManager.show_game_over()
 	
 	

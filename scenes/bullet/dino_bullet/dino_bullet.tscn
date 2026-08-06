@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dqvm7hqflk6t1" path="res://scenes/bullet/bullet.tscn" id="1_vlwhr"]
 [ext_resource type="Script" uid="uid://deu162y8rp1sq" path="res://scenes/bullet/dino_bullet/dino_bullet.gd" id="2_xweiv"]
-[ext_resource type="Texture2D" uid="uid://iu08nopsht8s" path="res://assets/bullets/Fire Effect and Bullet 16x16.png" id="3_ucsn4"]
+[ext_resource type="Texture2D" uid="uid://iu08nopsht8s" path="res://assets/pixel_assets/bullets/Fire Effect and Bullet 16x16.png" id="3_ucsn4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1avod"]
 radius = 6.0827627
@@ -19,5 +19,8 @@ texture = ExtResource("3_ucsn4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2DinoBullet" index="0" unique_id=774329810]
 shape = SubResource("CircleShape2D_1avod")
+
+[node name="Timer" parent="." index="2" unique_id=1724341237]
+wait_time = 5.0
 
 [connection signal="area_entered" from="Area2DinoBullet" to="." method="_on_area_2_dino_bullet_area_entered"]

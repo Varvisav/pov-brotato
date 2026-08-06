@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dqvm7hqflk6t1" path="res://scenes/bullet/bullet.tscn" id="1_7cy0m"]
 [ext_resource type="Script" uid="uid://dj175xkgj1pca" path="res://scenes/bullet/bomb_boom/bomb_bullet.gd" id="2_vftcm"]
-[ext_resource type="Texture2D" uid="uid://c8v5jckpe4mcl" path="res://assets/bullets/fire_bullets/Fire Spell_Frame_05.png" id="2_xpj7y"]
+[ext_resource type="Texture2D" uid="uid://c8v5jckpe4mcl" path="res://assets/pixel_assets/bullets/fire_bullets/Fire Spell_Frame_05.png" id="2_xpj7y"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vftcm"]
 radius = 4.0
@@ -20,6 +20,7 @@ scale = Vector2(0.055, 0.055)
 texture = ExtResource("2_xpj7y")
 
 [node name="Area2D" type="Area2D" parent="." index="1" unique_id=1029358687]
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=965017791]
 rotation = 1.5707964

@@ -4,6 +4,7 @@ class_name Hud
 @onready var coins_label: Label = $PlayerCointsLabel
 @onready var slow_effect_label: Label = $SlowEffectLabel
 @onready var pause_button: Button = %PauseButton
+
 var pause_is_holding_down:bool = false
 #var player_helth = GameManager.player_HP
 

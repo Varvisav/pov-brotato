@@ -30,7 +30,7 @@ func hurt_flush():
 	anim.modulate = color_normal 
 
 func shoot():
-	if dead:
+	if dead or !is_instance_valid(GameManager.player):
 		return
 	if GameManager.player_already_slowed:
 		return

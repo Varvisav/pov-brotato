@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 GameManager="*uid://dsju838iuf58g"
 SignalBus="*uid://djyvafjgxoep0"
 
+[gui]
+
+theme/custom_font="uid://t50jb0c2vhiy"
+
 [input]
 
 right={

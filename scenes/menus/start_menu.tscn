@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://1wlthkreyv12"]
 
 [ext_resource type="Script" uid="uid://cx1bnvvxxgl5n" path="res://scenes/menus/start_menu.gd" id="1_ouf4f"]
-[ext_resource type="Texture2D" uid="uid://djceeaioeou76" path="res://assets/Background_space.png" id="2_thu50"]
+[ext_resource type="Texture2D" uid="uid://djceeaioeou76" path="res://assets/pixel_assets/Background_space.png" id="2_thu50"]
 
 [node name="StartMenu" type="VBoxContainer" unique_id=604685616]
 anchors_preset = 8

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://xedttfyg2cbm"]
+
+[ext_resource type="PackedScene" uid="uid://bf0la6c7mldac" path="res://scenes/menus/level_up_option.tscn" id="2_557cp"]
+
+[sub_resource type="GDScript" id="GDScript_bmhvl"]
+script/source = "class_name LevelUpInterface
+extends Control
+
+@onready var level_up_options: HBoxContainer = %levelUpOptions
+@export var level_up_option_scene: PackedScene
+@onready var end_shopping_button: Button = %EndShoppingButton
+const level_up_interface_scene: PackedScene = preload(\"res://scenes/menus/level_up_interface.tscn\")
+
+var options: Array[LevelUpOptionData]
+
+func _ready() -> void:
+	SignalBus.level_up.connect(_on_level_up)
+	end_shopping_button.pressed.connect(on_end_shopping_button_pressed)
+
+	for option: LevelUpOptionData in options:
+		var level_up_option: LevelUpOption = level_up_option_scene.instantiate()
+		level_up_option.level_up_option_data = option
+		level_up_options.add_child(level_up_option)
+
+func _process(delta):
+	pass
+
+func on_end_shopping_button_pressed():
+	pass
+
+static func new_instance(level_up_options: Array[LevelUpOptionData]) -> LevelUpInterface:
+	var level_up_interface: LevelUpInterface = level_up_interface_scene.instantiate()
+	level_up_interface.options = level_up_options
+	return level_up_interface
+
+
+func _on_level_up(_level_up_enum):
+	self.queue_free()
+"
+
+[node name="LevelUpInterface" type="VBoxContainer" unique_id=1924502220]
+process_mode = 3
+z_index = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -75.5
+offset_top = -22.0
+offset_right = 75.5
+offset_bottom = 22.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_bmhvl")
+level_up_option_scene = ExtResource("2_557cp")
+
+[node name="levelUpOptions" type="HBoxContainer" parent="." unique_id=180536122]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="EndShoppingButton" type="Button" parent="." unique_id=358588121]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 40
+text = "end shopping
+"

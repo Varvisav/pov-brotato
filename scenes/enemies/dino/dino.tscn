@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://drorxldd7etay" path="res://scenes/enemies/walking_enemy.tscn" id="1_03jrr"]
 [ext_resource type="Script" uid="uid://v6r1geg88ttd" path="res://scenes/enemies/dino/dino.gd" id="2_if4hj"]
-[ext_resource type="Texture2D" uid="uid://n48o1l6yc1j" path="res://assets/enemies/dino_shit/DinoSprites - doux.png" id="2_omkrt"]
+[ext_resource type="Texture2D" uid="uid://n48o1l6yc1j" path="res://assets/pixel_assets/enemies/dino_shit/DinoSprites - doux.png" id="2_omkrt"]
 [ext_resource type="PackedScene" uid="uid://b2v7ye0umgm87" path="res://scenes/bullet/dino_bullet/dino_bullet.tscn" id="3_f1nsr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f1nsr"]
@@ -120,7 +120,6 @@ shape = SubResource("RectangleShape2D_f1nsr")
 
 [node name="HpLabel" parent="." index="2" unique_id=2055006388]
 self_modulate = Color(1, 0, 0.003921569, 1)
-offset_left = -4.0
 offset_top = -30.0
 offset_right = 4.0
 offset_bottom = -10.0

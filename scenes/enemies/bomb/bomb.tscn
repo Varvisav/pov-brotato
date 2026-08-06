@@ -2,10 +2,10 @@
 
 [ext_resource type="Script" uid="uid://cu4t3a04ik8qu" path="res://scenes/enemies/bomb/bomb.gd" id="1_us5qt"]
 [ext_resource type="PackedScene" uid="uid://degmf7xmnguny" path="res://scenes/bullet/bomb_boom/bomb_bullet.tscn" id="2_yhgdp"]
-[ext_resource type="Texture2D" uid="uid://dhcb2ka3v72yy" path="res://assets/enemies/bombshit/bomb.png" id="3_qpkla"]
-[ext_resource type="Texture2D" uid="uid://b0xru8c0a2c40" path="res://assets/enemies/bombshit/BOMB_DMG.png" id="3_yhgdp"]
-[ext_resource type="Texture2D" uid="uid://b1evfodsmqg0k" path="res://assets/enemies/bombshit/bomb45.png" id="4_ul4ab"]
-[ext_resource type="Texture2D" uid="uid://b1aon0vy23yvx" path="res://assets/enemies/bombshit/bomb46.png" id="5_l7x1y"]
+[ext_resource type="Texture2D" uid="uid://dhcb2ka3v72yy" path="res://assets/pixel_assets/enemies/bombshit/bomb.png" id="3_qpkla"]
+[ext_resource type="Texture2D" uid="uid://b0xru8c0a2c40" path="res://assets/pixel_assets/enemies/bombshit/BOMB_DMG.png" id="3_yhgdp"]
+[ext_resource type="Texture2D" uid="uid://b1evfodsmqg0k" path="res://assets/pixel_assets/enemies/bombshit/bomb45.png" id="4_ul4ab"]
+[ext_resource type="Texture2D" uid="uid://b1aon0vy23yvx" path="res://assets/pixel_assets/enemies/bombshit/bomb46.png" id="5_l7x1y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fsxe1"]
 size = Vector2(22.5, 21)
@@ -173,11 +173,13 @@ wait_time = 2.0
 autostart = true
 
 [node name="TimerLabel" type="Label" parent="." unique_id=2059262288]
-offset_left = -9.0
+offset_left = -8.0
 offset_top = -14.0
-offset_right = 9.0
-offset_bottom = 9.0
+offset_right = 10.0
+offset_bottom = 10.0
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
+text = "3"
 horizontal_alignment = 1
 vertical_alignment = 1
 

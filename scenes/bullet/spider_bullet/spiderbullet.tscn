@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dqvm7hqflk6t1" path="res://scenes/bullet/bullet.tscn" id="1_xy1vd"]
 [ext_resource type="Script" uid="uid://ca4icvg5pb6y3" path="res://scenes/bullet/spider_bullet/spider_bullet.gd" id="2_6tvck"]
-[ext_resource type="Texture2D" uid="uid://klscggtw45l1" path="res://assets/bullets/spdr.png" id="2_i5oum"]
+[ext_resource type="Texture2D" uid="uid://klscggtw45l1" path="res://assets/pixel_assets/bullets/spdr.png" id="2_i5oum"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p0rqu"]
 size = Vector2(31, 9)
@@ -22,5 +22,8 @@ flip_h = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0" unique_id=1212483368]
 position = Vector2(-2.5, -0.5)
 shape = SubResource("RectangleShape2D_p0rqu")
+
+[node name="Timer" parent="." index="2" unique_id=1724341237]
+wait_time = 5.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

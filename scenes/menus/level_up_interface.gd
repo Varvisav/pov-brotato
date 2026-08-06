@@ -9,7 +9,7 @@ const level_up_interface_scene: PackedScene = preload("res://scenes/menus/level_
 var options: Array[LevelUpOptionData]
 
 func _ready() -> void:
-	SignalBus.level_up.connect(_on_level_up)
+	SignalBus.shopping_ended.connect(_on_shopping_ended)
 	end_shopping_button.pressed.connect(on_end_shopping_button_pressed)
 
 	for option: LevelUpOptionData in options:
@@ -20,6 +20,8 @@ func _ready() -> void:
 func _process(delta):
 	pass
 
+func on_end_shopping_button_pressed():
+	SignalBus.shopping_ended.emit()
 
 static func new_instance(level_up_options: Array[LevelUpOptionData]) -> LevelUpInterface:
 	var level_up_interface: LevelUpInterface = level_up_interface_scene.instantiate()
@@ -27,5 +29,5 @@ static func new_instance(level_up_options: Array[LevelUpOptionData]) -> LevelUpI
 	return level_up_interface
 
 
-func _on_level_up(_level_up_enum):
+func _on_shopping_ended():
 	self.queue_free()
