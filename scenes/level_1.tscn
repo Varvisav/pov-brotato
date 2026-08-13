@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://busnv50su4g0p" path="res://scenes/spawners/bomb_SPAWNER/bomb_spawner.tscn" id="7_pa8r4"]
 [ext_resource type="PackedScene" uid="uid://bkr5f268biii1" path="res://scenes/spawners/spider_spawner/spider_spawner.tscn" id="8_15mv3"]
 [ext_resource type="PackedScene" uid="uid://bi6y7frwsy6d6" path="res://scenes/spawners/zombie_toast_spawner/zombie_toast_spawner.tscn" id="8_e3sih"]
+[ext_resource type="Script" uid="uid://cdfhn1jlyhjl3" path="res://scenes/level_up_timer.gd" id="9_e3sih"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3sih"]
 texture = ExtResource("4_15mv3")
@@ -1071,3 +1072,11 @@ visibility_layer = 7
 position = Vector2(593, 314)
 
 [node name="Spawner" parent="." unique_id=508203789 instance=ExtResource("8_15mv3")]
+
+[node name="LevelUpTimer" type="Timer" parent="." unique_id=64566534]
+wait_time = 30.0
+one_shot = true
+autostart = true
+script = ExtResource("9_e3sih")
+
+[connection signal="timeout" from="LevelUpTimer" to="LevelUpTimer" method="_on_timeout"]

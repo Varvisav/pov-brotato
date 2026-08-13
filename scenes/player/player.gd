@@ -7,37 +7,52 @@ class_name Player extends CharacterBody2D
 @onready var reload_timer: Timer = $ReloadTimer
 var alive = true
 var HP: int = 40
-var bullets_count: int = 30:
+var bullets_count: int = 40:
 	set(value):
 		bullets_count=value
 		if value == 0:
-			reload_timer.start()
+			reload_start()
+
+
 
 func _input(_event):
 	if Input.is_action_just_pressed("shoot"):
 		self._shoot()
 
+
 func _ready():
 	GameManager.player = self
 	SignalBus.heal.connect(_on_heal)
-	reload_timer.timeout.connect(reload)
+	reload_timer.timeout.connect(reload_finish)
 	
 
 func _physics_process(_delta: float) -> void:
 	if alive == false:
 		HP = 0
 		return
+	if GameManager.player_already_slowed:
+		moving_and_animations("slow_walk", "idle")
+	else:
+		moving_and_animations("walk", "idle")
+	#if reload_timer.is_stopped() == false:
+		#moving_and_animations("reload", "reload")
+	#else:
+		#moving_and_animations("walk", "idle")
+	#elif Input.is_action_just_pressed("reload"):
+		#reload_start()
+	
+
+func moving_and_animations(walking, idle):
 	var direction = Input.get_vector("left", "right", "up", "down")
 	velocity = direction * GameManager.game_stats.player_speed * GameManager.game_stats.speed_factor
 	if direction:
-		anim.play("walk")
+		anim.play(walking)
 	else:
-		anim.play("idle")
+		anim.play(idle)
 	turn_sprite(direction)
 	move_and_slide()
 	if GameManager.player.HP <= 0:
 		death()
-	
 
 func _on_heal(value: int):
 	HP += value
@@ -65,8 +80,19 @@ func _shoot():
 	GameManager.spawn_bullet(bullet)
 	bullets_count -= 1
 
-func reload():
-	bullets_count =30
+func reload_start():
+	reload_timer.start()
+	GameManager.hud.reload_icon.visible = true
+	GameManager.hud.player_bullets_label.visible = false
+	GameManager.hud.reload_icon.anim.play("reload")
+
+
+func reload_finish():
+	bullets_count = 40
+	GameManager.hud.reload_icon.visible = false
+	GameManager.hud.player_bullets_label.visible = true
+
+
 
 func death():
 	alive = false
@@ -93,6 +119,7 @@ func slowing_effect():
 	GameManager.hud.slow_effect_label.visible = true
 	if GameManager.spider != null:
 		GameManager.player_already_slowed = true
+	anim.play("slow_walk")
 	
 func _on_slow_timer_timeout():
 	GameManager.game_stats.player_speed = GameManager.game_stats.player_speed / 0.55

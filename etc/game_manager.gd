@@ -12,7 +12,7 @@ var hud: Hud
 var spider: Spider
 var can_shoot: bool = true
 var player_already_slowed: bool = false
-
+var level_up_timer: LevelUpTimer
 
 var level_up_list: LevelUpList = preload("res://const_data/level_ups.tres")
 
@@ -20,14 +20,13 @@ func _ready() -> void:
 	SignalBus.level_up.connect(on_level_up)
 	process_mode = PROCESS_MODE_ALWAYS
 	SignalBus.shopping_ended.connect(unpause_game)
+	SignalBus.level_up_timer_timeout.connect(_on_level_up_timer_timeout)
 
 var player_points: int:
 	get:
 		return game_stats.player_points
 	set(value):
 		game_stats.player_points = value
-		if value % 7 == 0:
-			show_level_up_interface()
 	
 var game_stats: GameStats = GameStats.new()
 
@@ -37,7 +36,8 @@ func show_game_over():
 
 func start_game():
 	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
-	#player.HP = 30
+	game_stats.player_points = 0
+	game_stats.player_coins = 0
 	
 func quit():
 	get_tree().quit()
@@ -63,6 +63,9 @@ func player_hurt():
 func up_score():
 	player_points += 1
 
+func _on_level_up_timer_timeout():
+	show_level_up_interface()
+	game_stats.level_ups_count+=1
 
 func show_level_up_interface():
 	get_tree().paused = true
@@ -80,7 +83,8 @@ func on_level_up(level_up_data: LevelUpOptionData):
 		LevelUpOptionData.LevelUpEnum.SPEED_UP:
 			game_stats.speed_factor += 0.25
 		LevelUpOptionData.LevelUpEnum.HEALTH_UP:
-			SignalBus.heal.emit(8)
+			SignalBus.heal.emit(10)
+	
 		_:
 			push_error("level up not implemented")
 	game_stats.player_coins -= cost

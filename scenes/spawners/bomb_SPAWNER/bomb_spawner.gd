@@ -2,7 +2,7 @@ extends Spawner
 class_name BombSpawner
 
 func _on_timer_timeout():
-	spawn_enemy(5, 55)
+	spawn_enemy(4, 55)
 
 func _process(delta):
-	functioning(16, 4.5, 0.16)
+	functioning(8, 4.6, 0.1)

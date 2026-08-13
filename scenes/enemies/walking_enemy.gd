@@ -7,7 +7,10 @@ class_name WalkingEnemy
 
 @export var color_flush: Color
 @export var color_normal: Color
-@export var HP: int = 2
+@export var HP: int = 2:
+	set(value):
+		HP = max(value,0)
+
 @export var speed: int = 100
 @export var coin_scene: PackedScene
 

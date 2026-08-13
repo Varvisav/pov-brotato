@@ -115,13 +115,13 @@ animations = [{
 size = Vector2(46, 30)
 
 [node name="Spider" unique_id=942232534 instance=ExtResource("1_qu2og")]
-scale = Vector2(0.5, 0.5)
+scale = Vector2(0.4, 0.4)
 script = ExtResource("2_ta5jr")
 bullet_scene = ExtResource("3_0v4vh")
 color_flush = Color(1, 0, 0, 1)
 color_normal = Color(1, 1, 1, 1)
-HP = 10
-speed = 50
+HP = 18
+speed = 65
 
 [node name="HurtBox" parent="." index="0" unique_id=2143176809]
 collision_layer = 2

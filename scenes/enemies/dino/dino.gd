@@ -11,10 +11,10 @@ func _process(delta):
 		HP = 0
 		return
 	palyer_following(350, anim, false)
-	var threshold = GameManager.player_points / 15
+	var threshold = GameManager.player_points / 12
 	if threshold >last_threshold:
 		last_threshold=threshold
-		timer.wait_time = max(0.9, timer.wait_time - 0.4)
+		timer.wait_time = max(0.9, timer.wait_time - 0.05)
 	if HP <= 0:
 		die(anim)
 	
@@ -28,13 +28,13 @@ func shoot():
 		anim.modulate = Color(0, 0, 1)
 		await get_tree().create_timer(0.40).timeout
 		anim.modulate = Color(1, 1, 1)
+		if dead or !is_instance_valid(GameManager.player):
+			return
 		var bullet_dir: Vector2 = (GameManager.player.global_position - self.global_position).normalized()
-
 		var bullet = bullet_scene.instantiate()
 		bullet.direction = bullet_dir
 		bullet.global_position = global_position
 		GameManager.spawn_dino_bullet(bullet)
-		
 		
 
 func hurt_flush():

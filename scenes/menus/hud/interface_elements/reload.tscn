@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://ly4s8jvnjlwc"]
+
+[ext_resource type="Script" uid="uid://b6xm1x5eq58ym" path="res://scenes/menus/hud/interface_elements/reload.gd" id="1_kbnf2"]
+[ext_resource type="Texture2D" uid="uid://u8fsahkq1d5d" path="res://assets/pixel_assets/interface/All.png" id="1_saia4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t0yk1"]
+atlas = ExtResource("1_saia4")
+region = Rect2(912, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kbnf2"]
+atlas = ExtResource("1_saia4")
+region = Rect2(1104, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ksu4n"]
+atlas = ExtResource("1_saia4")
+region = Rect2(1056, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd8oo"]
+atlas = ExtResource("1_saia4")
+region = Rect2(1008, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_enx76"]
+atlas = ExtResource("1_saia4")
+region = Rect2(960, 96, 48, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tjoed"]
+atlas = ExtResource("1_saia4")
+region = Rect2(912, 96, 48, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t0yk1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t0yk1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kbnf2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ksu4n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nd8oo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_enx76")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tjoed")
+}],
+"loop": false,
+"name": &"reload",
+"speed": 0.7
+}]
+
+[node name="reload" type="Node2D" unique_id=1938890681]
+script = ExtResource("1_kbnf2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=360603908]
+scale = Vector2(5.4, 5.4)
+sprite_frames = SubResource("SpriteFrames_t0yk1")
+animation = &"reload"
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+
+[node name="ReloadLabel" type="Label" parent="." unique_id=398495501]
+offset_left = -43.0
+offset_top = -18.0
+offset_right = 136.0
+offset_bottom = 35.0
+theme_override_font_sizes/font_size = 40
+text = "reloading..."

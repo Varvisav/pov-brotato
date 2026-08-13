@@ -17,7 +17,7 @@ func _process(delta):
 	var threshold = GameManager.player_points / 2
 	if threshold > last_threshold:
 		last_threshold=threshold
-		shooting_timer.wait_time = max(3, shooting_timer.wait_time - 0.03)
+		shooting_timer.wait_time = max(3, shooting_timer.wait_time - 0.05)
 	if HP <= 0:
 		die(anim)
 
@@ -39,6 +39,8 @@ func shoot():
 		anim.modulate = Color(0, 0, 1)
 		await get_tree().create_timer(0.40).timeout
 		anim.modulate = Color(1, 1, 1)
+		if dead or !is_instance_valid(GameManager.player):
+			return
 		var bullet_dir: Vector2 = (GameManager.player.global_position - self.global_position).normalized()
 
 		var bullet = bullet_scene.instantiate()
@@ -53,9 +55,8 @@ func _on_shooting_timer_timeout():
 		shoot()
 
 func _on_hurt_for_player_body_entered(body: Node2D):
-	if dead:
+	if dead or !is_instance_valid(GameManager.player):
 		return
 	if body.name == "CharacterBody2D":
 		GameManager.player.HP -=1
 		GameManager.player.hurt_flush()
-

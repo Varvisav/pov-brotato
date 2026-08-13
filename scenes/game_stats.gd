@@ -6,3 +6,5 @@ var player_coins: int = 0
 
 var speed_factor: float = 1.0
 var damage_factor: float = 1.0
+
+var level_ups_count: int = 0

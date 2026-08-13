@@ -10,6 +10,6 @@ class_name LevelUpOptionData
 enum LevelUpEnum{
     SPEED_UP,
     HEALTH_UP,
-    DAMAGE_UP
+    DAMAGE_UP,
 }
 

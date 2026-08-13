@@ -1,22 +1,14 @@
 [gd_scene format=3 uid="uid://blp1nftrwk7t4"]
 
 [ext_resource type="Script" uid="uid://cvr1d2xi8fxqe" path="res://scenes/menus/hud.gd" id="1_ahhtf"]
+[ext_resource type="Texture2D" uid="uid://du2ondbienocc" path="res://assets/pixel_assets/interface/hearts/heart_32x32.png" id="2_2xkr3"]
+[ext_resource type="Texture2D" uid="uid://copnk8n2q3bxg" path="res://assets/pixel_assets/Coin/Coin_Still.png" id="2_lf75b"]
+[ext_resource type="PackedScene" uid="uid://ly4s8jvnjlwc" path="res://scenes/menus/hud/interface_elements/reload.tscn" id="2_tfgnj"]
+[ext_resource type="Texture2D" uid="uid://jhj33tln1b08" path="res://assets/pixel_assets/bullets/bullet6.png" id="4_j3fgs"]
 
 [node name="Hud" type="CanvasLayer" unique_id=2104495217]
 process_mode = 3
 script = ExtResource("1_ahhtf")
-
-[node name="PauseButton" type="Button" parent="." unique_id=570372188]
-unique_name_in_owner = true
-process_mode = 3
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -90.0
-offset_bottom = 47.0
-grow_horizontal = 0
-theme_override_font_sizes/font_size = 40
-text = "PAUSE"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=858375578]
 offset_right = 263.0
@@ -35,18 +27,82 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 60
 
 [node name="PlayerHpLabel" type="Label" parent="." unique_id=437285707]
-offset_right = 263.0
-offset_bottom = 55.0
+offset_left = 45.0
+offset_top = 1.0
+offset_right = 111.0
+offset_bottom = 56.0
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 60
 
-[node name="PlayerCointsLabel" type="Label" parent="." unique_id=402581145]
-offset_top = 47.0
-offset_right = 263.0
-offset_bottom = 160.0
-theme_override_font_sizes/font_size = 60
-text = "
-"
+[node name="Heart32x32" type="Sprite2D" parent="PlayerHpLabel" unique_id=1087311626]
+position = Vector2(-22, 29)
+scale = Vector2(1.45, 1.45)
+texture = ExtResource("2_2xkr3")
 
-[connection signal="mouse_entered" from="PauseButton" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="PauseButton" to="." method="_on_button_mouse_exited"]
+[node name="PlayerCointsLabel" type="Label" parent="." unique_id=402581145]
+offset_left = 44.0
+offset_top = 49.0
+offset_right = 108.0
+offset_bottom = 97.0
+theme_override_font_sizes/font_size = 60
+
+[node name="CoinStill" type="Sprite2D" parent="PlayerCointsLabel" unique_id=659686368]
+position = Vector2(-22, 27)
+scale = Vector2(3, 3)
+texture = ExtResource("2_lf75b")
+
+[node name="ReloadIcon" parent="." unique_id=1938890681 instance=ExtResource("2_tfgnj")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(938, 21)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=365084435]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -64.0
+offset_bottom = 48.0
+grow_horizontal = 0
+theme_override_constants/separation = 13
+
+[node name="PlayerBulletsLabel" type="Label" parent="HBoxContainer" unique_id=993911558]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 60
+text = ": 30"
+
+[node name="Bullet6" type="Sprite2D" parent="HBoxContainer/PlayerBulletsLabel" unique_id=2029542983]
+position = Vector2(-21.999998, 37)
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("4_j3fgs")
+
+[node name="Bullet7" type="Sprite2D" parent="HBoxContainer/PlayerBulletsLabel/Bullet6" unique_id=1236791973]
+position = Vector2(-31.111094, 0.5555556)
+texture = ExtResource("4_j3fgs")
+
+[node name="Bullet8" type="Sprite2D" parent="HBoxContainer/PlayerBulletsLabel/Bullet6/Bullet7" unique_id=629411426]
+position = Vector2(15.5555725, 0)
+texture = ExtResource("4_j3fgs")
+
+[node name="PauseButton" type="Button" parent="HBoxContainer" unique_id=570372188]
+unique_name_in_owner = true
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "PAUSE"
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1927211157]
+unique_name_in_owner = true
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -131.5
+offset_right = 131.5
+offset_bottom = 13.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="HBoxContainer/PauseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/PauseButton" to="." method="_on_button_mouse_exited"]
