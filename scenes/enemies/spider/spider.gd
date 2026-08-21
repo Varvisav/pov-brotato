@@ -6,7 +6,9 @@ class_name Spider
 var last_threshold =0
 
 func _ready():
+	super._ready()
 	GameManager.spider = self
+	
 
 
 func _process(delta):

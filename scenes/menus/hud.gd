@@ -9,7 +9,7 @@ class_name Hud
 @onready var timer_label: Label = %TimerLabel
 
 var pause_is_holding_down:bool = false
-#var player_helth = GameManager.player_HP
+
 
 
 func _ready() -> void:

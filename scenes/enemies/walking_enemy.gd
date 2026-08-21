@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name WalkingEnemy
 
+signal enemy_hitted(direction: Vector2)
 @onready var hurt_box: Area2D = $HurtBox
 @onready var hp_label: Label = $HpLabel
 #@onready var anim: AnimatedSprite2D
@@ -16,7 +17,11 @@ class_name WalkingEnemy
 
 var direction: Vector2
 var dead = false
+var inertia: Vector2 = Vector2.ZERO
 #var anim:AnimatedSprite2D
+
+func _ready():
+	enemy_hitted.connect(_on_enemy_hitted)
 
 func palyer_following(seeing_player_distance: int, anim:AnimatedSprite2D, right:bool):
 	if dead:
@@ -26,11 +31,11 @@ func palyer_following(seeing_player_distance: int, anim:AnimatedSprite2D, right:
 		velocity = Vector2.ZERO
 		anim.play("idle")
 		return
-	
+	inertia = inertia.lerp(Vector2.ZERO, 0.08)
 	var distance= global_position.distance_to(GameManager.player.global_position)
 	if distance < seeing_player_distance:
 		direction = (GameManager.player.global_position - self.global_position).normalized()
-		velocity = direction * speed
+		velocity = direction * speed + inertia
 		if direction:
 			anim.play("walk")
 		
@@ -49,7 +54,8 @@ func palyer_following(seeing_player_distance: int, anim:AnimatedSprite2D, right:
 		anim.play("idle")
 	hp_label.text = str(HP)
 	
-
+func _on_enemy_hitted(bullet_direction: Vector2):
+	inertia = bullet_direction * 110
 
 func die(anim:AnimatedSprite2D):
 	if dead:

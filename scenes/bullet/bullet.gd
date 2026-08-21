@@ -21,6 +21,8 @@ func deal_damage(object, body):
 		self.queue_free()
 		body.HP -= damage
 		body.hurt_flush()
+		if body is WalkingEnemy:
+			body.enemy_hitted.emit(direction)
 
 
 func bullet_dissapearing():

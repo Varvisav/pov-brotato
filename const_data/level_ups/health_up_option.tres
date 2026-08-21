@@ -4,7 +4,7 @@
 
 [resource]
 script = ExtResource("1_r6u71")
-info = "health (+8)"
+info = "health (+10)"
 level_up_enum = 1
-cost = 3
+cost = 1
 metadata/_custom_type_script = "uid://b526jk4psrpx0"
