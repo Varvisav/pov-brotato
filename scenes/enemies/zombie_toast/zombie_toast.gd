@@ -36,6 +36,8 @@ func _on_timer_timeout():
 		return
 	GameManager.player.HP -=3
 	GameManager.player.hurt_flush()
+	if is_player_inside:
+		hurt_for_player_timer.start()
 
 
 func _on_hurt_for_player_body_exited(body: Node2D):

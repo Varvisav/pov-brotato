@@ -49,7 +49,8 @@ func palyer_following(seeing_player_distance: int, anim:AnimatedSprite2D, right:
 				anim.flip_h = true
 			elif direction.x >0:
 				anim.flip_h = false
-		move_and_slide()
+		if distance > 20:
+			move_and_slide()
 	else:
 		anim.play("idle")
 	hp_label.text = str(HP)

@@ -321,8 +321,8 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p47bc"]
-radius = 14.0
-height = 42.0
+radius = 17.0
+height = 44.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_iwuka"]
 animations = [{
@@ -365,7 +365,7 @@ drag_horizontal_enabled = true
 [node name="HurtBox" type="Area2D" parent="." unique_id=2046912522]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=825626570]
-position = Vector2(-2, -2)
+position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_p47bc")
 
 [node name="SlowTimer" type="Timer" parent="." unique_id=21877716]

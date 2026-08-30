@@ -94,8 +94,14 @@ func reload_start():
 	GameManager.hud.reload_icon.anim.play("reload")
 	if reload_timer.is_stopped() == false:
 		while reload_timer.time_left > 0:
-			SoundManager.play_sound(SoundManager.RELOAD_SOUND)			
-			await get_tree().create_timer(1.4).timeout
+			SoundManager.play_sound(SoundManager.RELOAD_SOUND)	
+			var sound_timer = Timer.new()	
+			sound_timer.wait_time = 1.4
+			sound_timer.one_shot = true
+			sound_timer.autostart = true
+			add_child(sound_timer)
+			await sound_timer.timeout
+			sound_timer.queue_free()
 		
 
 
@@ -108,6 +114,7 @@ func reload_finish():
 
 func death():
 	alive = false
+	footstep_timer.stop()
 	anim.play("death")
 	await anim.animation_finished
 	GameManager.player = null
