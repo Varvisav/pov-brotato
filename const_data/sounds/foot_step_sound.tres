@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://bs027rjbcmlyx"]
+
+[ext_resource type="AudioStream" uid="uid://dcy3wyn1kdc61" path="res://assets/sounds/Audio/footstep02.ogg" id="1_dhpja"]
+[ext_resource type="Script" uid="uid://d2kj371eqg8hm" path="res://const_data/sounds/sound.gd" id="2_c6r8r"]
+
+[resource]
+script = ExtResource("2_c6r8r")
+audio_stream = ExtResource("1_dhpja")
+bus = 2
+metadata/_custom_type_script = "uid://d2kj371eqg8hm"

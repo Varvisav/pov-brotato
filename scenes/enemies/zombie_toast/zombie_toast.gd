@@ -9,7 +9,7 @@ func _process(delta):
 	if dead:
 		HP = 0
 		return
-	palyer_following(310, anim, true)
+	palyer_following(600, anim, true)
 	if HP <= 0:
 		die(anim)
 

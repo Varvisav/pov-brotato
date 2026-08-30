@@ -9,8 +9,9 @@
 [ext_resource type="PackedScene" uid="uid://bkr5f268biii1" path="res://scenes/spawners/spider_spawner/spider_spawner.tscn" id="8_15mv3"]
 [ext_resource type="PackedScene" uid="uid://bi6y7frwsy6d6" path="res://scenes/spawners/zombie_toast_spawner/zombie_toast_spawner.tscn" id="8_e3sih"]
 [ext_resource type="Script" uid="uid://cdfhn1jlyhjl3" path="res://scenes/level_up_timer.gd" id="9_e3sih"]
+[ext_resource type="PackedScene" uid="uid://4kcxbvixqkc0" path="res://scenes/enemies/zombie_toast/zombie_toast.tscn" id="10_2y5yt"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_e3sih"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2os1m"]
 texture = ExtResource("4_15mv3")
 40:0/0 = 0
 41:0/0 = 0
@@ -1047,7 +1048,7 @@ texture = ExtResource("4_15mv3")
 
 [sub_resource type="TileSet" id="TileSet_e3sih"]
 physics_layer_0/collision_layer = 1
-sources/2 = SubResource("TileSetAtlasSource_e3sih")
+sources/2 = SubResource("TileSetAtlasSource_2os1m")
 
 [node name="Level1" type="Node2D" unique_id=193006746]
 
@@ -1078,5 +1079,8 @@ wait_time = 30.0
 one_shot = true
 autostart = true
 script = ExtResource("9_e3sih")
+
+[node name="ZombieToast" parent="." unique_id=942232534 instance=ExtResource("10_2y5yt")]
+position = Vector2(596, 71)
 
 [connection signal="timeout" from="LevelUpTimer" to="LevelUpTimer" method="_on_timeout"]

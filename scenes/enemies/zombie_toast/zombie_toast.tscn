@@ -120,7 +120,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"death",
-"speed": 8.5
+"speed": 9.5
 }, {
 "frames": [{
 "duration": 1.0,
@@ -160,7 +160,7 @@ script = ExtResource("2_l4vpl")
 color_flush = Color(1, 0, 0.003921569, 1)
 color_normal = Color(1, 1, 1, 1)
 HP = 22
-speed = 33
+speed = 55
 
 [node name="HurtBox" parent="." index="0" unique_id=2143176809]
 collision_layer = 2
@@ -182,9 +182,10 @@ theme_override_font_sizes/font_size = 17
 position = Vector2(0, -13)
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_ihiwy")
-animation = &"walk"
+animation = &"death"
 autoplay = "idle"
-frame_progress = 0.7401634
+frame = 11
+frame_progress = 1.0
 
 [node name="HurtForPlayer" type="Area2D" parent="." index="4" unique_id=648211856]
 

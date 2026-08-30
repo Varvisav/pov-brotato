@@ -109,7 +109,7 @@ bullet_scene = ExtResource("3_f1nsr")
 color_flush = Color(1, 0, 0.003921569, 1)
 color_normal = Color(1, 1, 1, 1)
 HP = 16
-speed = 50
+speed = 70
 
 [node name="HurtBox" parent="." index="0" unique_id=2143176809]
 collision_layer = 2
@@ -120,10 +120,11 @@ shape = SubResource("RectangleShape2D_f1nsr")
 
 [node name="HpLabel" parent="." index="2" unique_id=2055006388]
 self_modulate = Color(1, 0, 0.003921569, 1)
-offset_top = -30.0
-offset_right = 4.0
-offset_bottom = -10.0
-theme_override_font_sizes/font_size = 14
+offset_left = -6.0
+offset_top = -29.0
+offset_right = 8.0
+offset_bottom = -9.0
+theme_override_font_sizes/font_size = 22
 text = ""
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="3" unique_id=1489265488]

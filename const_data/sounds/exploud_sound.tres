@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://cgxxjacx2skbn"]
+
+[ext_resource type="AudioStream" uid="uid://cbr8g07fnynie" path="res://assets/sounds/brackeys_platformer_assets/sounds/explosion.wav" id="1_lwrgg"]
+[ext_resource type="Script" uid="uid://d2kj371eqg8hm" path="res://const_data/sounds/sound.gd" id="2_fjxud"]
+
+[resource]
+script = ExtResource("2_fjxud")
+audio_stream = ExtResource("1_lwrgg")
+bus = 2
+metadata/_custom_type_script = "uid://d2kj371eqg8hm"

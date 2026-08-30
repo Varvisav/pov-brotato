@@ -317,7 +317,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"walk",
-"speed": 8.0
+"speed": 7.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_p47bc"]
@@ -338,6 +338,7 @@ animations = [{
 }]
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=1497356721]
+process_mode = 1
 script = ExtResource("1_g2els")
 bullet_scene = ExtResource("2_dqkch")
 
@@ -368,9 +369,11 @@ position = Vector2(-2, -2)
 shape = SubResource("CapsuleShape2D_p47bc")
 
 [node name="SlowTimer" type="Timer" parent="." unique_id=21877716]
+process_mode = 1
 wait_time = 4.5
 
 [node name="ReloadTimer" type="Timer" parent="." unique_id=727891556]
+process_mode = 1
 wait_time = 7.0
 one_shot = true
 
@@ -378,5 +381,10 @@ one_shot = true
 sprite_frames = SubResource("SpriteFrames_iwuka")
 animation = &"shoot"
 
+[node name="FootStepsTimer" type="Timer" parent="." unique_id=844517739]
+unique_name_in_owner = true
+wait_time = 0.6
+
 [connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="timeout" from="SlowTimer" to="." method="_on_slow_timer_timeout"]
+[connection signal="timeout" from="FootStepsTimer" to="." method="_on_foot_steps_timer_timeout"]

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://cc3h5x0g8ydrl"]
+
+[ext_resource type="AudioStream" uid="uid://thefqturbwqg" path="res://assets/sounds/swipe.wav" id="1_c4pwn"]
+[ext_resource type="Script" uid="uid://d2kj371eqg8hm" path="res://const_data/sounds/sound.gd" id="2_4t8m2"]
+
+[resource]
+script = ExtResource("2_4t8m2")
+audio_stream = ExtResource("1_c4pwn")
+bus = 2
+metadata/_custom_type_script = "uid://d2kj371eqg8hm"

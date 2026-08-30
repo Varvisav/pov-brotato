@@ -13,9 +13,8 @@ func boom():
 		velocity = Vector2.ZERO
 		anim.play("idle")
 		return
-	#anim.play("boom")
 	dead = true
-	#await anim.animation_finished
+	SoundManager.play_sound(SoundManager.EXPLOSION_SOUND)
 	queue_free()
 	for i in bullets_count:
 		var angle = i * TAU / bullets_count

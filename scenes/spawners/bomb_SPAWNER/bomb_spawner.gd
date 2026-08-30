@@ -5,4 +5,4 @@ func _on_timer_timeout():
 	spawn_enemy(4, 55)
 
 func _process(delta):
-	functioning(8, 4.6, 0.1)
+	functioning(2, 4.6, 0.037)

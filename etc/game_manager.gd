@@ -13,6 +13,8 @@ var spider: Spider
 var can_shoot: bool = true
 var player_already_slowed: bool = false
 var level_up_timer: LevelUpTimer
+var level_up_interface_visible: bool = false	
+
 
 var level_up_list: LevelUpList = preload("res://const_data/level_ups.tres")
 
@@ -42,7 +44,13 @@ func start_game():
 func quit():
 	get_tree().quit()
 
-	
+func pause_game():
+	get_tree().paused = not get_tree().paused
+
+func unpause_game():
+	get_tree().paused = false
+	hud.timer_label.visible = true
+
 func spawn_bullet(bullet: PlayerBullet):
 	bullets_node.add_child(bullet)
 	
@@ -69,28 +77,34 @@ func _on_level_up_timer_timeout():
 
 func show_level_up_interface():
 	get_tree().paused = true
+	hud.timer_label.visible = false
+	hud.warning_label.visible = true
+	SoundManager.play_sound(SoundManager.ALARM_SOUND)
+	await get_tree().create_timer(3).timeout
+	hud.warning_label.visible = false
 	var level_up_interface := LevelUpInterface.new_instance(level_up_list.level_ups)
 	hud.add_child(level_up_interface)
 	
 
 func on_level_up(level_up_data: LevelUpOptionData):
 	var cost := level_up_data.cost
+	if !is_instance_valid(GameManager.player):
+		return
 	if not game_stats.player_coins >= cost:
 		return
 	match level_up_data.level_up_enum:
 		LevelUpOptionData.LevelUpEnum.DAMAGE_UP:
-			game_stats.damage_factor += 0.25
+			game_stats.damage_factor += 0.20
 		LevelUpOptionData.LevelUpEnum.SPEED_UP:
-			game_stats.speed_factor += 0.25
+			game_stats.speed_factor += 0.20
+			player.footstep_timer.wait_time -= 0.05
+			#player.anim.animation_speed("walk") -= 0.5
 		LevelUpOptionData.LevelUpEnum.HEALTH_UP:
 			SignalBus.heal.emit(10)
 	
 		_:
 			push_error("level up not implemented")
 	game_stats.player_coins -= cost
-	level_up_data.cost += 3
+	level_up_data.cost += 2
 	
 	
-
-func unpause_game():
-	get_tree().paused = false

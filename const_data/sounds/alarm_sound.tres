@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://c8mktqnwv7lix"]
+
+[ext_resource type="AudioStream" uid="uid://ddcpu7l1kre5q" path="res://assets/sounds/Retro Success Melody 04 - electric piano 2.wav" id="1_6fys5"]
+[ext_resource type="Script" uid="uid://d2kj371eqg8hm" path="res://const_data/sounds/sound.gd" id="2_jysed"]
+
+[resource]
+script = ExtResource("2_jysed")
+audio_stream = ExtResource("1_6fys5")
+bus = 1
+metadata/_custom_type_script = "uid://d2kj371eqg8hm"

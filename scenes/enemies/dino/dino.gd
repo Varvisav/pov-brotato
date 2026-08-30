@@ -10,7 +10,7 @@ func _process(delta):
 	if dead:
 		HP = 0
 		return
-	palyer_following(350, anim, false)
+	palyer_following(520, anim, false)
 	var threshold = GameManager.player_points / 12
 	if threshold >last_threshold:
 		last_threshold=threshold
@@ -24,7 +24,7 @@ func shoot():
 		return
 
 	var distance= global_position.distance_to(GameManager.player.global_position)
-	if distance < 295:
+	if distance < 340:
 		anim.modulate = Color(0, 0, 1)
 		await get_tree().create_timer(0.40).timeout
 		anim.modulate = Color(1, 1, 1)

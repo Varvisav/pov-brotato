@@ -120,8 +120,7 @@ script = ExtResource("2_ta5jr")
 bullet_scene = ExtResource("3_0v4vh")
 color_flush = Color(1, 0, 0, 1)
 color_normal = Color(1, 1, 1, 1)
-HP = 18
-speed = 65
+HP = 20
 
 [node name="HurtBox" parent="." index="0" unique_id=2143176809]
 collision_layer = 2
@@ -151,5 +150,9 @@ autostart = true
 position = Vector2(1, -3)
 shape = SubResource("RectangleShape2D_0v4vh")
 
+[node name="BiteTimer" type="Timer" parent="." index="6" unique_id=417922085]
+
 [connection signal="timeout" from="ShootingTimer" to="." method="_on_shooting_timer_timeout"]
 [connection signal="body_entered" from="HurtForPlayer" to="." method="_on_hurt_for_player_body_entered"]
+[connection signal="body_exited" from="HurtForPlayer" to="." method="_on_hurt_for_player_body_exited"]
+[connection signal="timeout" from="BiteTimer" to="." method="_on_bite_timer_timeout"]

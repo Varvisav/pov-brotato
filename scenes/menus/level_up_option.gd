@@ -16,4 +16,5 @@ func _on_level_up(_level_up_enum):
 	cost_label.text = "cost: " + str(level_up_option_data.cost)
 
 func _on_select_button_pressed():
+	SoundManager.play_sound(SoundManager.BUY_SOUND) 
 	SignalBus.level_up.emit(level_up_option_data)

@@ -1,6 +1,6 @@
 class_name GameStats extends Resource
 
-var player_speed: int = 120
+var player_speed: int = 90
 var player_points: int = 0
 var player_coins: int = 0
 

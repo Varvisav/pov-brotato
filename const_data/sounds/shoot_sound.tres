@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Sound" format=3 uid="uid://brfxfx3k7jtk"]
+
+[ext_resource type="AudioStream" uid="uid://dgc2v0innblw0" path="res://assets/sounds/Retro Blop StereoUP 09.wav" id="1_f04n1"]
+[ext_resource type="Script" uid="uid://d2kj371eqg8hm" path="res://const_data/sounds/sound.gd" id="2_6iu1b"]
+
+[resource]
+script = ExtResource("2_6iu1b")
+audio_stream = ExtResource("1_f04n1")
+bus = 1
+metadata/_custom_type_script = "uid://d2kj371eqg8hm"

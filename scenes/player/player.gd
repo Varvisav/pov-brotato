@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var camera = $Camera2D
 @onready var slow_effect_timer: Timer = $SlowTimer
 @onready var reload_timer: Timer = $ReloadTimer
+@onready var footstep_timer: Timer = %FootStepsTimer
 var alive = true
 var HP: int = 40
 var bullets_count: int = 40:
@@ -24,7 +25,6 @@ func _ready():
 	GameManager.player = self
 	SignalBus.heal.connect(_on_heal)
 	reload_timer.timeout.connect(reload_finish)
-	
 
 func _physics_process(_delta: float) -> void:
 	if alive == false:
@@ -47,7 +47,13 @@ func moving_and_animations(walking, idle):
 	velocity = direction * GameManager.game_stats.player_speed * GameManager.game_stats.speed_factor
 	if direction:
 		anim.play(walking)
+		if footstep_timer.is_stopped():
+			SoundManager.play_sound(SoundManager.FOOTSTEP_SOUND)
+			footstep_timer.start()
+			
 	else:
+		footstep_timer.stop()
+	
 		anim.play(idle)
 	turn_sprite(direction)
 	move_and_slide()
@@ -71,6 +77,7 @@ func _shoot():
 		return
 	if bullets_count <= 0:
 		return
+	SoundManager.play_sound(SoundManager.SHOOT_SOUND)
 	var mouse_pos: Vector2 = get_global_mouse_position()
 	var bullet_dir: Vector2 = (mouse_pos - self.global_position).normalized()
 	var bullet: PlayerBullet = bullet_scene.instantiate()
@@ -85,6 +92,11 @@ func reload_start():
 	GameManager.hud.reload_icon.visible = true
 	GameManager.hud.player_bullets_label.visible = false
 	GameManager.hud.reload_icon.anim.play("reload")
+	if reload_timer.is_stopped() == false:
+		while reload_timer.time_left > 0:
+			SoundManager.play_sound(SoundManager.RELOAD_SOUND)			
+			await get_tree().create_timer(1.4).timeout
+		
 
 
 func reload_finish():
@@ -115,6 +127,7 @@ func slowing_effect():
 	if GameManager.player_already_slowed:
 		return
 	GameManager.game_stats.player_speed = GameManager.game_stats.player_speed * 0.55
+	footstep_timer.wait_time += 0.1
 	slow_effect_timer.start()
 	GameManager.hud.slow_effect_label.visible = true
 	if GameManager.spider != null:
@@ -123,6 +136,11 @@ func slowing_effect():
 	
 func _on_slow_timer_timeout():
 	GameManager.game_stats.player_speed = GameManager.game_stats.player_speed / 0.55
+	footstep_timer.wait_time -= 0.1
 	slow_effect_timer.stop()
 	GameManager.hud.slow_effect_label.visible = false
 	GameManager.player_already_slowed = false
+
+
+func _on_foot_steps_timer_timeout():
+	SoundManager.play_sound(SoundManager.FOOTSTEP_SOUND)

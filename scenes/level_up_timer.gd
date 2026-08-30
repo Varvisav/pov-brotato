@@ -16,4 +16,6 @@ func restart_timer():
 	start(30 + added_time)
 
 func _on_timeout():
+	if !is_instance_valid(GameManager.player):
+		return
 	SignalBus.level_up_timer_timeout.emit()

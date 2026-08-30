@@ -5,6 +5,8 @@
 [ext_resource type="Texture2D" uid="uid://copnk8n2q3bxg" path="res://assets/pixel_assets/Coin/Coin_Still.png" id="2_lf75b"]
 [ext_resource type="PackedScene" uid="uid://ly4s8jvnjlwc" path="res://scenes/menus/hud/interface_elements/reload.tscn" id="2_tfgnj"]
 [ext_resource type="Texture2D" uid="uid://jhj33tln1b08" path="res://assets/pixel_assets/bullets/bullet6.png" id="4_j3fgs"]
+[ext_resource type="Texture2D" uid="uid://hk4l0bgfhuvw" path="res://assets/pixel_assets/interface/Pause.png" id="6_g5guj"]
+[ext_resource type="Texture2D" uid="uid://h7dtld84lpkh" path="res://assets/pixel_assets/interface/Play.png" id="7_yb5n8"]
 
 [node name="Hud" type="CanvasLayer" unique_id=2104495217]
 process_mode = 3
@@ -58,7 +60,7 @@ anchor_right = 1.0
 offset_left = -64.0
 offset_bottom = 48.0
 grow_horizontal = 0
-theme_override_constants/separation = 13
+theme_override_constants/separation = 10
 
 [node name="PlayerBulletsLabel" type="Label" parent="HBoxContainer" unique_id=993911558]
 unique_name_in_owner = true
@@ -80,17 +82,30 @@ texture = ExtResource("4_j3fgs")
 position = Vector2(15.5555725, 0)
 texture = ExtResource("4_j3fgs")
 
-[node name="PauseButton" type="Button" parent="HBoxContainer" unique_id=570372188]
-unique_name_in_owner = true
-process_mode = 3
-layout_mode = 2
-theme_override_font_sizes/font_size = 40
-text = "PAUSE"
-
 [node name="ReloadIcon" parent="HBoxContainer" unique_id=1938890681 instance=ExtResource("2_tfgnj")]
 unique_name_in_owner = true
 visible = false
 position = Vector2(-128, 26)
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer" unique_id=204238864]
+layout_mode = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 7
+
+[node name="PauseButton" type="Button" parent="HBoxContainer/MarginContainer" unique_id=570372188]
+unique_name_in_owner = true
+process_mode = 3
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+theme_override_icons/icon = ExtResource("6_g5guj")
+text = "
+    "
+icon = ExtResource("6_g5guj")
+flat = true
+icon_alignment = 1
+expand_icon = true
 
 [node name="TimerLabel" type="Label" parent="." unique_id=1927211157]
 unique_name_in_owner = true
@@ -101,8 +116,26 @@ offset_left = -131.5
 offset_right = 131.5
 offset_bottom = 13.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 60
+theme_override_font_sizes/font_size = 80
 horizontal_alignment = 1
 
-[connection signal="mouse_entered" from="HBoxContainer/PauseButton" to="." method="_on_button_mouse_entered"]
-[connection signal="mouse_exited" from="HBoxContainer/PauseButton" to="." method="_on_button_mouse_exited"]
+[node name="WarningLabel" type="Label" parent="." unique_id=453406732]
+unique_name_in_owner = true
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 13.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 90
+text = "SHOPPING TIME!"
+
+[node name="Play" type="Sprite2D" parent="." unique_id=1952577312]
+visible = false
+position = Vector2(1122, 36)
+texture = ExtResource("7_yb5n8")
+
+[connection signal="mouse_entered" from="HBoxContainer/MarginContainer/PauseButton" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="HBoxContainer/MarginContainer/PauseButton" to="." method="_on_button_mouse_exited"]

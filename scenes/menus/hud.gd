@@ -7,7 +7,7 @@ class_name Hud
 @onready var player_bullets_label: Label = %PlayerBulletsLabel
 @onready var reload_icon: Node2D = %ReloadIcon
 @onready var timer_label: Label = %TimerLabel
-
+@onready var warning_label: Label = %WarningLabel
 var pause_is_holding_down:bool = false
 
 
@@ -28,7 +28,11 @@ func _process(_delta):
 
 func _on_paused_button_pressed():
 	get_tree().paused = not get_tree().paused
+	SoundManager.play_sound(SoundManager.BUTTON_SOUND)
+	pause_button.icon = preload("res://assets/pixel_assets/interface/Pause.png") if get_tree().paused == false else preload("res://assets/pixel_assets/interface/Play.png")
+	
 
+	
 func _on_button_mouse_entered():
 	GameManager.can_shoot = false
 

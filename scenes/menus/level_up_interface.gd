@@ -21,6 +21,7 @@ func _process(delta):
 	pass
 
 func on_end_shopping_button_pressed():
+	SoundManager.play_sound(SoundManager.BUTTON_SOUND)
 	SignalBus.shopping_ended.emit()
 
 static func new_instance(level_up_options: Array[LevelUpOptionData]) -> LevelUpInterface:
