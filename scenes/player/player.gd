@@ -2,63 +2,66 @@ class_name Player extends CharacterBody2D
 
 @export var bullet_scene: PackedScene
 @onready var anim = $AnimatedSprite2D
-@onready var camera = $Camera2D
+@onready var camera: Camera2D = $Camera2D
 @onready var slow_effect_timer: Timer = $SlowTimer
 @onready var reload_timer: Timer = $ReloadTimer
 @onready var footstep_timer: Timer = %FootStepsTimer
-var alive = true
-var HP: int = 40
+
+var direction: Vector2 = Vector2.ZERO
+var alive = true:
+	set(value):
+		alive = value
+		if not alive:
+			die()
+var HP: int = 40:
+	get():
+		if alive:
+			return HP
+		return 0
 var bullets_count: int = 40:
 	set(value):
 		bullets_count=value
 		if value == 0:
 			reload_start()
 
-
-
-func _input(_event):
-	if Input.is_action_just_pressed("shoot"):
-		self._shoot()
-
-
 func _ready():
 	GameManager.player = self
 	SignalBus.heal.connect(_on_heal)
 	reload_timer.timeout.connect(reload_finish)
 
+func _input(_event):
+	direction = Input.get_vector("left", "right", "up", "down")
+	if Input.is_action_just_pressed("shoot"):
+		self._shoot()
+
+func _process(_delta: float) -> void:
+	anim_move()
+	if velocity != Vector2.ZERO and footstep_timer.is_stopped():
+		footstep_timer.start()
+		SoundManager.play_sound(SoundManager.FOOTSTEP_SOUND)
+			
+
 func _physics_process(_delta: float) -> void:
-	if alive == false:
-		HP = 0
+	if not alive:
 		return
-	if GameManager.player_already_slowed:
-		moving_and_animations("slow_walk", "idle")
-	else:
-		moving_and_animations("walk", "idle")
-	#if reload_timer.is_stopped() == false:
-		#moving_and_animations("reload", "reload")
-	#else:
-		#moving_and_animations("walk", "idle")
-	#elif Input.is_action_just_pressed("reload"):
-		#reload_start()
+	move()
 	
 
-func moving_and_animations(walking, idle):
-	var direction = Input.get_vector("left", "right", "up", "down")
+func move():
 	velocity = direction * GameManager.game_stats.player_speed * GameManager.game_stats.speed_factor
-	if direction:
-		anim.play(walking)
-		if footstep_timer.is_stopped():
-			SoundManager.play_sound(SoundManager.FOOTSTEP_SOUND)
-			footstep_timer.start()
-			
+	move_and_slide()
+	turn_sprite(direction)
+
+func anim_move():
+	if direction != Vector2.ZERO:
+		if GameManager.player_already_slowed:
+			anim.play("slow_walk")
+		else:
+			anim.play("walk")
 	else:
 		footstep_timer.stop()
-	
-		anim.play(idle)
-	turn_sprite(direction)
-	move_and_slide()
-	if GameManager.player.HP <= 0:
-		death()
+		anim.play("idle")
+
 
 func _on_heal(value: int):
 	HP += value
@@ -112,10 +115,10 @@ func reload_finish():
 
 
 
-func death():
+func die():
 	alive = false
 	footstep_timer.stop()
-	anim.play("death")
+	anim.play("die")
 	await anim.animation_finished
 	GameManager.player = null
 	var tween = create_tween()
