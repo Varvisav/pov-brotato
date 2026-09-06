@@ -9,8 +9,9 @@ const FOOTSTEP_SOUND:Sound = preload("res://const_data/sounds/foot_step_sound.tr
 const BUTTON_SOUND:Sound = preload("res://const_data/sounds/button_sound.tres")
 const BUY_SOUND:Sound = preload("res://const_data/sounds/buy_sound.tres")
 
-func play_sound(sound: Sound):
+func play_sound(sound: Sound, pitch_scale: = 1.0):
 	var audio_stream_player := AudioStreamPlayer.new()
+	audio_stream_player.pitch_scale = pitch_scale
 	audio_stream_player.stream = sound.audio_stream
 	add_child(audio_stream_player)
 	audio_stream_player.bus = sound.get_bus_str()

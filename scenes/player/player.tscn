@@ -199,7 +199,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fcs02")
 }],
-"loop": false,
+"loop": 0,
 "name": &"death",
 "speed": 7.0
 }, {
@@ -228,7 +228,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ioxgp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -257,7 +257,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rw8a5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"reload",
 "speed": 6.0
 }, {
@@ -286,7 +286,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uniwh")
 }],
-"loop": true,
+"loop": 1,
 "name": &"slow_walk",
 "speed": 8.0
 }, {
@@ -315,7 +315,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8qxvo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 7.0
 }]
@@ -327,12 +327,12 @@ height = 44.0
 [sub_resource type="SpriteFrames" id="SpriteFrames_iwuka"]
 animations = [{
 "frames": [],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": 1,
 "name": &"shoot",
 "speed": 5.0
 }]

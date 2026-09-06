@@ -38,7 +38,7 @@ func _process(_delta: float) -> void:
 	anim_move()
 	if velocity != Vector2.ZERO and footstep_timer.is_stopped():
 		footstep_timer.start()
-		SoundManager.play_sound(SoundManager.FOOTSTEP_SOUND)
+		SoundManager.play_sound(SoundManager.FOOTSTEP_SOUND, GameManager.game_stats.speed_factor)
 			
 
 func _physics_process(_delta: float) -> void:
