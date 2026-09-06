@@ -3,7 +3,17 @@
 [ext_resource type="Script" uid="uid://cx1bnvvxxgl5n" path="res://scenes/menus/start_menu.gd" id="1_ouf4f"]
 [ext_resource type="Texture2D" uid="uid://kslrk37vwh23" path="res://assets/pixel_assets/Dungeon_brick_wall_grey.png.png" id="2_r2ayf"]
 
-[node name="StartMenu" type="VBoxContainer" unique_id=604685616]
+[node name="DungeonBrickWallGrey_png" type="TextureRect" unique_id=361052888]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_r2ayf")
+expand_mode = 1
+
+[node name="StartMenu" type="VBoxContainer" parent="." unique_id=604685616]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -19,20 +29,15 @@ size_flags_horizontal = 4
 theme_override_constants/separation = 19
 script = ExtResource("1_ouf4f")
 
-[node name="DungeonBrickWallGrey_png" type="Sprite2D" parent="." unique_id=924168796]
-position = Vector2(185.875, 110.25)
-scale = Vector2(1.102474, 1.0736111)
-texture = ExtResource("2_r2ayf")
-
-[node name="StartButton" type="Button" parent="." unique_id=41879110]
+[node name="StartButton" type="Button" parent="StartMenu" unique_id=41879110]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 70
 text = "START"
 
-[node name="QuitButton" type="Button" parent="." unique_id=390063187]
+[node name="QuitButton" type="Button" parent="StartMenu" unique_id=390063187]
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "QUIT"
 
-[connection signal="pressed" from="QuitButton" to="." method="_on_quit_button_pressed"]
+[connection signal="pressed" from="StartMenu/QuitButton" to="StartMenu" method="_on_quit_button_pressed"]
