@@ -10,6 +10,8 @@ class_name Player extends CharacterBody2D
 var direction: Vector2 = Vector2.ZERO
 var alive = true:
 	set(value):
+		if value == alive:
+			return
 		alive = value
 		if not alive:
 			die()
@@ -18,6 +20,10 @@ var HP: int = 40:
 		if alive:
 			return HP
 		return 0
+	set(value):
+		HP=value
+		if HP <=0:
+			alive = false
 var bullets_count: int = 40:
 	set(value):
 		bullets_count=value
@@ -35,7 +41,8 @@ func _input(_event):
 		self._shoot()
 
 func _process(_delta: float) -> void:
-	anim_move()
+	if alive:
+		anim_move()
 	if velocity != Vector2.ZERO and footstep_timer.is_stopped():
 		footstep_timer.start()
 		SoundManager.play_sound(SoundManager.FOOTSTEP_SOUND)
@@ -116,10 +123,11 @@ func reload_finish():
 
 
 func die():
-	alive = false
 	footstep_timer.stop()
 	anim.play("die")
+	print ("animation")
 	await anim.animation_finished
+	print ("animation finished")
 	GameManager.player = null
 	var tween = create_tween()
 	#await get_tree().create_timer(2).timeout

@@ -38,8 +38,8 @@ func show_game_over():
 
 func start_game():
 	get_tree().change_scene_to_file("res://scenes/level_1.tscn")
-	game_stats.player_points = 0
-	game_stats.player_coins = 0
+	game_stats = GameStats.new()
+	level_up_list = preload("res://const_data/level_ups.tres")
 	
 func quit():
 	get_tree().quit()

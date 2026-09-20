@@ -199,8 +199,8 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fcs02")
 }],
-"loop": false,
-"name": &"death",
+"loop": 0,
+"name": &"die",
 "speed": 7.0
 }, {
 "frames": [{
@@ -228,7 +228,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ioxgp")
 }],
-"loop": true,
+"loop": 1,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -257,7 +257,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_rw8a5")
 }],
-"loop": true,
+"loop": 1,
 "name": &"reload",
 "speed": 6.0
 }, {
@@ -286,7 +286,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_uniwh")
 }],
-"loop": true,
+"loop": 1,
 "name": &"slow_walk",
 "speed": 8.0
 }, {
@@ -315,7 +315,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_8qxvo")
 }],
-"loop": true,
+"loop": 1,
 "name": &"walk",
 "speed": 7.0
 }]
@@ -327,12 +327,12 @@ height = 44.0
 [sub_resource type="SpriteFrames" id="SpriteFrames_iwuka"]
 animations = [{
 "frames": [],
-"loop": true,
+"loop": 1,
 "name": &"default",
 "speed": 5.0
 }, {
 "frames": [],
-"loop": true,
+"loop": 1,
 "name": &"shoot",
 "speed": 5.0
 }]
@@ -350,8 +350,10 @@ z_index = 1
 position = Vector2(2.2737368e-13, 0.9999999)
 scale = Vector2(1.7, 1.7)
 sprite_frames = SubResource("SpriteFrames_y4r1p")
-animation = &"walk"
+animation = &"idle"
 autoplay = "idle"
+frame = 2
+frame_progress = 0.008276237
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1515485504]
 zoom = Vector2(2, 2)
@@ -365,7 +367,6 @@ drag_horizontal_enabled = true
 [node name="HurtBox" type="Area2D" parent="." unique_id=2046912522]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox" unique_id=825626570]
-position = Vector2(1, -2)
 shape = SubResource("CapsuleShape2D_p47bc")
 
 [node name="SlowTimer" type="Timer" parent="." unique_id=21877716]
