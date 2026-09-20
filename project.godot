@@ -21,6 +21,11 @@ GameManager="*uid://dsju838iuf58g"
 SignalBus="*uid://djyvafjgxoep0"
 SoundManager="*uid://bubeoewe6o0hg"
 
+[display]
+
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
 [gui]
 
 theme/custom_font="uid://t50jb0c2vhiy"
