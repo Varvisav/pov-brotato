@@ -93,7 +93,7 @@ func _shoot():
 	var bullet: PlayerBullet = bullet_scene.instantiate()
 	bullet.direction = bullet_dir
 	bullet.global_position = global_position
-	bullet.damage *= GameManager.game_stats.damage_factor
+	bullet.damage = roundi(bullet.damage * GameManager.game_stats.damage_factor)
 	GameManager.spawn_bullet(bullet)
 	bullets_count -= 1
 
